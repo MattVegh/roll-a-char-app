@@ -1,10 +1,13 @@
-.char-display {
+.roll-display {
     background: lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
+.hidden {
+  visibility: hidden;
+}
   .bio-input {
     width: 300px;
     height: 60px;

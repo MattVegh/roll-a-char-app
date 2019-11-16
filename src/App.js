@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route } from 'react-router-dom'
 import CharInputs from './components/CharInputs/CharInputs'
 import CharList from './components/CharList/CharList'
 import Nav from './components/Nav/Nav'
@@ -14,14 +15,21 @@ class App extends Component {
       name: '',
       gender: '',
       race: '',
-      classType: ''
+      classType: '',
+      stats: ''
     }
   }
 
-  updateCurrentRoll = (rollData) => {
-    this.setState({currentRoll: {name: rollData, gender: rollData, race: rollData, classType: rollData}})
-    //this.setState({currentRoll: {name: rollData.name, gender: rollData.gender, race: rollData.race, classType: rollData.classType}})
-    console.log('state is', this.state.currentRoll)
+  updateCurrentRoll = (charDetails) => {
+    this.setState({
+      currentRoll: {
+        name: charDetails.name,
+        gender: charDetails.gender,
+        race: charDetails.race,
+        classType: charDetails.classType,
+        stats: charDetails.stats
+      }
+    })
   }
 
 
@@ -29,11 +37,12 @@ class App extends Component {
 
     return (
       <div className='App'>
-          <Nav />
-          <main role='main'>
-            <CharInputs updateCurrentRoll={this.updateCurrentRoll}/>
-            <RollDisplay />
-          </main>
+        <Nav />
+        <main role='main'>
+          <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
+          <Route exact path='/' render={props => <RollDisplay currentRoll={this.state.currentRoll} {...props} />} />
+          <Route exact path='/characters' component={CharList} />
+        </main>
       </div>
     )
 
