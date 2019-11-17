@@ -31,7 +31,7 @@ export default class CharInputs extends Component {
                 const inputName = element.getAttribute('name')
 
                 charDetails[inputName] = element.value;
-            }
+            } 
         })
         //console.log('from handleSubmit', charDetails)
         this.handleInputFill(charDetails)
@@ -63,19 +63,19 @@ export default class CharInputs extends Component {
         }
 
         if (!charDetails.name) {
-           //find race
-           //find gender
-           //pick name based on race + gender
-            // let race = charDetails.race
-            // let gender = charDetails.gender
 
-            // let filteredRace = races.filter(race => race == charDetails.race)
-            // let filteredGender = genders.filter(gender => gender == charDetails.gender)
-            let nameArray = races[charDetails.race][charDetails.gender].FirstNames
-            let randomFirstName = nameArray[Math.floor(Math.random() * nameArray.length)]
+            let firstNameArray = nameStore.races[charDetails.race].Gender[charDetails.gender].FirstNames
+            let randomFirstName = firstNameArray[Math.floor(Math.random() * firstNameArray.length)]
+
+            let lastNameArray = nameStore.races[charDetails.race].LastNames
+            let randomLastName = lastNameArray ? lastNameArray[Math.floor(Math.random() * lastNameArray.length)] : ''
             
-            console.log('name array', nameArray)
-            console.log('first name is', randomFirstName)
+            charDetails.name = `${randomFirstName} ${randomLastName}`
+
+            // console.log('firstname array', firstNameArray)
+            // console.log('lastName array', lastNameArray)
+            // console.log('first name is', randomFirstName)
+            // console.log('last name', randomLastName)
 
            
 
@@ -96,29 +96,87 @@ export default class CharInputs extends Component {
             for (let j = 0; j < 4; j++) {
                 let roll = Math.floor(Math.random() * 6) + 1;
                 dieArray.push(roll)
-                //console.log('rolls are', dieArray)
+                console.log('rolls are', dieArray)
             }
-            let min = dieArray.sort().shift()
-            //console.log('min is', min)
-            let newDieArray = dieArray
-            //console.log('newdiearray', newDieArray)
-            let stat = newDieArray[0] + newDieArray[1] + newDieArray[2]
+            dieArray.sort().shift()
+            
+            console.log('diearray', dieArray)
+            let stat = dieArray[0] + dieArray[1] + dieArray[2]
             statArray.push(stat)
-            //console.log('stat is', stat)
+            console.log('stat is', stat)
         }
 
-        //console.log('stats array', statArray)
+        console.log('stats array', statArray)
         charDetails.stats = statArray
         this.assignStats(charDetails)
 
     }
 
     assignStats = (charDetails) => {
+        //find class
+        //each class has 2 prioritized stats
+        //get 2 highest stats, randomly assign them to those priorities
+        //randomly assign remaining 4 stats
+        charDetails.stats.sort((a, b) => a - b)
+        console.log('stats', charDetails.stats)
+        
+        let bestTwoStats = charDetails.stats.slice(4)
+        console.log('2 highest stats are', bestTwoStats)
+        let remainingFourStats = charDetails.stats.slice(0, 4)
+        console.log('remaing 4 stats are', remainingFourStats)
+
+        if (charDetails.classType === 'Barbarian' || 'Fighter') {
+            //top str
+            charDetails.stats.strength = charDetails.stats.pop()
+            console.log('str', charDetails.stats.strength)
+            console.log('remaining', charDetails.stats)
+            charDetails.stats.dexterity = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            console.log('remaining', charDetails.stats)
+            charDetails.stats.constitution = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            console.log('remaining', charDetails.stats)
+            charDetails.stats.intelligence = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            console.log('remaining', charDetails.stats)
+            charDetails.stats.wisdom = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            console.log('remaining', charDetails.stats)
+            charDetails.stats.charisma = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            console.log('remaining', charDetails.stats)
+            
+        }
+
+        if (charDetails.classType === 'Bard' || 'Sorcerer' || 'Warlock') {
+            //top cha
+        }
+
+        if (charDetails.classType === 'Cleric' || 'Druid') {
+            //top wis
+        }
+
+        if (charDetails.classType === 'Rogue') {
+            //top dex
+        }
+
+        if (charDetails.classType === 'Monk') {
+            //top dex and wis
+        }
+
+        if (charDetails.classType === 'Paladin') {
+            //top str and cha
+        }
+
+        if (charDetails.classType === 'Ranger') {
+            //top dex and wis
+        }
+
+        if (charDetails.classType === 'Wizard') {
+            //top int
+        }
+
+        this.addRaceBonus(charDetails)
+    }
+
+    addRaceBonus = (charDetails) => {
         this.props.updateCurrentRoll(charDetails)
     }
-    // addRaceBonus = () => {
-    // 
-    // }
 
     render() {
         console.log('nameStore test', nameStore.races)

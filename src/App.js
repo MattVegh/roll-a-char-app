@@ -16,7 +16,14 @@ class App extends Component {
       gender: '',
       race: '',
       classType: '',
-      stats: ''
+      stats: {
+        strength: '',
+        dexterity: '', 
+        constitution: '',
+        intelligence: '',
+        wisdom: '',
+        charisma: '',
+      }
     }
   }
 
@@ -27,7 +34,14 @@ class App extends Component {
         gender: charDetails.gender,
         race: charDetails.race,
         classType: charDetails.classType,
-        stats: charDetails.stats
+        stats: {
+          strength: charDetails.stats.strength,
+          dexterity: charDetails.stats.dexterity, 
+          constitution: charDetails.stats.constitution,
+          intelligence: charDetails.stats.intelligence,
+          wisdom: charDetails.stats.wisdom,
+          charisma: charDetails.stats.charisma,
+        }
       }
     })
   }
