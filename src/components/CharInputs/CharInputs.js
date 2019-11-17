@@ -33,55 +33,49 @@ export default class CharInputs extends Component {
                 charDetails[inputName] = element.value;
             }
         })
-        console.log('from handleSubmit', charDetails)
+        //console.log('from handleSubmit', charDetails)
         this.handleInputFill(charDetails)
 
     };
 
     handleInputFill(charDetails) {
-
+        let races = Object.keys(nameStore.races)
+        let genders = nameStore.genders
+        let classes = nameStore.classes
+        console.log('races are', races, 'genders are', genders, 'classes are', classes)
+        
         if (!charDetails.gender) {
-            let randomGender = nameStore.genders[Math.floor(Math.random() * nameStore.genders.length)]
-            console.log('random gender is', randomGender)
+            let randomGender = genders[Math.floor(Math.random() * genders.length)]
+            //console.log('random gender is', randomGender)
             charDetails.gender = randomGender;
         }
 
         if (!charDetails.classType) {
-            let randomClass = nameStore.classes[Math.floor(Math.random() * nameStore.classes.length)]
-            console.log('random class is', randomClass)
+            let randomClass = classes[Math.floor(Math.random() * classes.length)]
+            //console.log('random class is', randomClass)
             charDetails.classType = randomClass
         }
 
         if (!charDetails.race) {
-            let randomRace = nameStore.races[Math.floor(Math.random() * nameStore.races.length)]
-            console.log('random race is', randomRace)
+            let randomRace = races[Math.floor(Math.random() * races.length)]
+            //console.log('random race is', randomRace)
             charDetails.race = randomRace
         }
 
         if (!charDetails.name) {
-            if (charDetails.race === 'Dwarf' && charDetails.gender === 'Male') {
-                let randomFirstName = nameStore.dwarfMaleFirst[Math.floor(Math.random() * nameStore.dwarfMaleFirst.length)]
-                let randomLastName = nameStore.dwarfLast[Math.floor(Math.random() * nameStore.dwarfLast.length)]
-                charDetails.name = `${randomFirstName} ${randomLastName}`
-            }
+           //find race
+           //find gender
+           //pick name based on race + gender
+            let race = charDetails.race
+            let gender = charDetails.gender
 
-            if (charDetails.race === 'Dwarf' && charDetails.gender === 'Female') {
-                let randomFirstName = nameStore.dwarfMaleFirst[Math.floor(Math.random() * nameStore.dwarfFemaleFirst.length)]
-                let randomLastName = nameStore.dwarfLast[Math.floor(Math.random() * nameStore.dwarfLast.length)]
-                charDetails.name = `${randomFirstName} ${randomLastName}`
-            }
+            let filteredRace = races.filter(race => race == Object.keys(nameStore.races))
+            let filteredGender = genders.filter(gender => gender == charDetails.gender)
+            console.log('filtered r', filteredRace)
+            console.log('filtered g', filteredGender)
 
-            if (charDetails.race === 'Dragonborn' && charDetails.gender === 'Male') {
-                let randomFirstName = nameStore.dragonbornMaleFirst[Math.floor(Math.random() * nameStore.dragonbornMaleFirst.length)]
-                let randomLastName = nameStore.dragonbornLast[Math.floor(Math.random() * nameStore.dragonbornLast.length)]
-                charDetails.name = `${randomFirstName} ${randomLastName}`
-            }
+           
 
-            if (charDetails.race === 'Dragonborn' && charDetails.gender === 'Female') {
-                let randomFirstName = nameStore.dragonbornMaleFirst[Math.floor(Math.random() * nameStore.dragonbornFemaleFirst.length)]
-                let randomLastName = nameStore.dragonbornLast[Math.floor(Math.random() * nameStore.dragonbornLast.length)]
-                charDetails.name = `${randomFirstName} ${randomLastName}`
-            }
         }
         
         console.log('from handleInputFill', charDetails)
@@ -99,18 +93,18 @@ export default class CharInputs extends Component {
             for (let j = 0; j < 4; j++) {
                 let roll = Math.floor(Math.random() * 6) + 1;
                 dieArray.push(roll)
-                console.log('rolls are', dieArray)
+                //console.log('rolls are', dieArray)
             }
             let min = dieArray.sort().shift()
-            console.log('min is', min)
+            //console.log('min is', min)
             let newDieArray = dieArray
-            console.log('newdiearray', newDieArray)
+            //console.log('newdiearray', newDieArray)
             let stat = newDieArray[0] + newDieArray[1] + newDieArray[2]
             statArray.push(stat)
-            console.log('stat is', stat)
+            //console.log('stat is', stat)
         }
 
-        console.log('stats array', statArray)
+        //console.log('stats array', statArray)
         charDetails.stats = statArray
         this.assignStats(charDetails)
 
@@ -124,6 +118,7 @@ export default class CharInputs extends Component {
     // }
 
     render() {
+        console.log('nameStore test', nameStore.races)
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
                 <div className='name-gender-box'>
