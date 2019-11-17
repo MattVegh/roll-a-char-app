@@ -130,14 +130,19 @@ export default class CharInputs extends Component {
             charDetails.stats.strength = charDetails.stats.pop()
             console.log('str', charDetails.stats.strength)
             console.log('remaining', charDetails.stats)
+
             charDetails.stats.dexterity = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
             console.log('remaining', charDetails.stats)
+
             charDetails.stats.constitution = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
             console.log('remaining', charDetails.stats)
+
             charDetails.stats.intelligence = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
             console.log('remaining', charDetails.stats)
+
             charDetails.stats.wisdom = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
             console.log('remaining', charDetails.stats)
+
             charDetails.stats.charisma = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
             console.log('remaining', charDetails.stats)
             
@@ -175,6 +180,43 @@ export default class CharInputs extends Component {
     }
 
     addRaceBonus = (charDetails) => {
+
+        if (charDetails.race === 'Dragonborn') {
+            charDetails.stats.strength = charDetails.stats.strength + 2
+            charDetails.stats.charisma++
+        }
+
+        if (charDetails.race === 'Dwarf') {
+
+        }
+
+        if (charDetails.race === 'Elf') {
+            
+        }
+
+        if (charDetails.race === 'Gnome') {
+            
+        }
+
+        if (charDetails.race === 'Half-Elf') {
+            
+        }
+
+        if (charDetails.race === 'Halfling') {
+            
+        }
+
+        if (charDetails.race === 'Half-Orc') {
+            
+        }
+
+        if (charDetails.race === 'Human') {
+            
+        }
+
+        if (charDetails.race === 'Tiefling') {
+            
+        }
         this.props.updateCurrentRoll(charDetails)
     }
 
