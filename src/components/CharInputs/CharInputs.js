@@ -66,13 +66,16 @@ export default class CharInputs extends Component {
            //find race
            //find gender
            //pick name based on race + gender
-            let race = charDetails.race
-            let gender = charDetails.gender
+            // let race = charDetails.race
+            // let gender = charDetails.gender
 
-            let filteredRace = races.filter(race => race == Object.keys(nameStore.races))
-            let filteredGender = genders.filter(gender => gender == charDetails.gender)
-            console.log('filtered r', filteredRace)
-            console.log('filtered g', filteredGender)
+            // let filteredRace = races.filter(race => race == charDetails.race)
+            // let filteredGender = genders.filter(gender => gender == charDetails.gender)
+            let nameArray = races[charDetails.race][charDetails.gender].FirstNames
+            let randomFirstName = nameArray[Math.floor(Math.random() * nameArray.length)]
+            
+            console.log('name array', nameArray)
+            console.log('first name is', randomFirstName)
 
            
 
