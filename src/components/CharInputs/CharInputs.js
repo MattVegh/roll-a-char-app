@@ -114,7 +114,6 @@ export default class CharInputs extends Component {
 
     assignStats = (charDetails) => {
         console.log('from assignStats', charDetails)
-        //charDetails.stats.sort((a, b) => a - b)
         console.log('stats', charDetails.stats)
 
         let statNames = nameStore.statNames
@@ -122,6 +121,7 @@ export default class CharInputs extends Component {
 
         let topStats = nameStore.classTypes[charDetails.classType].TopStats
 
+        //randomize the top stats for classes that have 2 priorities
         if (Math.floor(Math.random() * 1) == 0) {
             topStats.sort((a, b) => a - b)
         } else {
@@ -130,22 +130,33 @@ export default class CharInputs extends Component {
 
         console.log('top stat for', charDetails.classType, 'is', topStats)
 
+        //assign value to the prioritized stat(s)
         topStats.forEach(stat => {
             console.log('stat is', stat)
+
             let topRoll = Math.max(...charDetails.stats)
             charDetails.stats.splice(charDetails.stats.indexOf(topRoll), 1)
             charDetails.stats[stat] = topRoll
+
             console.log('top roll is', topRoll)
             console.log('char details', charDetails.stats)
         });
 
         console.log('remaning stats', charDetails.stats)
 
-        // statNames.forEach(stat => {
-        //     console.log('stat is', stat)
-        //     let roll = charDetails.stats[Math.floor(Math.random() * charDetails.stats.length)]
-        //     console.log('rollll', roll)
-        // })
+        //assign values to the remaining stats
+        statNames.forEach(stat => {
+            if (!charDetails.stats[stat]) {
+            console.log('statNames stat is', stat)
+
+            let roll = charDetails.stats[Math.floor(Math.random() * charDetails.stats.length)]
+            charDetails.stats.splice(charDetails.stats.indexOf(roll), 1)
+            charDetails.stats[stat] = roll
+
+            console.log('rollll', roll)
+            console.log('remaning stats', charDetails.stats)
+            }
+        })
 
 
         
@@ -216,39 +227,13 @@ export default class CharInputs extends Component {
 
         // }
 
-        // if (charDetails.classType === 'Bard' || 'Sorcerer' || 'Warlock') {
-        //     //top cha
-        // }
-
-        // if (charDetails.classType === 'Cleric' || 'Druid') {
-        //     //top wis
-        // }
-
-        // if (charDetails.classType === 'Rogue') {
-        //     //top dex
-        // }
-
-        // if (charDetails.classType === 'Monk') {
-        //     //top dex and wis
-        // }
-
-        // if (charDetails.classType === 'Paladin') {
-        //     //top str and cha
-        // }
-
-        // if (charDetails.classType === 'Ranger') {
-        //     //top dex and wis
-        // }
-
-        // if (charDetails.classType === 'Wizard') {
-        //     //top int
-        // }
-
         this.addRaceBonus(charDetails)
     }
 
     addRaceBonus = (charDetails) => {
         console.log('from addRaceBonus', charDetails)
+
+        
         // if (charDetails.race === 'Dragonborn') {
         //     charDetails.stats.strength += 2
         //     charDetails.stats.charisma++

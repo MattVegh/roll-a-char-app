@@ -3,7 +3,7 @@ export default {
     'genders': ['Male', 'Female'],
 
     'statNames': ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'],
-    
+
     'classTypes': {
         'Barbarian': {
             'TopStats': ['strength']
@@ -46,6 +46,11 @@ export default {
 
     'races': {
         'Dragonborn': {
+            'statBonus': {
+                'strength': 2,
+                'charisma': 1
+            },
+            
             'Gender': {
                 'Male': {
                     'FirstNames': ['Arjhan', 'Balasar', 'Bharash', 'Donaar', 'Ghesh', 'Heskan', 'Kriv', 'Medrash', 'Mehen', 'Nadarr', 'Pandjed', 'Patrin', 'Rhogar', 'Shamash', 'Shedinn', 'Tarhun', 'Torinn']
@@ -55,8 +60,13 @@ export default {
                 }
             },
             'LastNames': ['Clethtinthiallor', 'Daardendrian', 'Delmirev', 'Drachedandion', 'Fenkenkabradon', 'Kepeshkmolik', 'Kerrhylon', 'Kimbatuul', 'Linxakasendalor', 'Myastan', 'Nemmonis', 'Norixius', 'Ophinshtalajiir', 'Prexijandilin', 'Shestendeliath', 'Turnuroth', 'Verthisathurgiesh', 'Yarjerit']
+
         },
         'Dwarf': {
+            'statBonus': {
+                'constitution': 2
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Adrik', 'Alberich', 'Baern', 'Barendd', 'Brottor', 'Bruenor', 'Dain', 'Darrak', 'Delg', 'Eberk', 'Einkil', 'Fargrim', 'Flint', 'Gardain', 'Harbek', 'Kildrak', 'Morgran', 'Orsik', 'Oskar', 'Rangrim', 'Rurik', 'Taklinn', 'Thoradin', 'Thorin', 'Tordek', 'Traubon', 'Travok', 'Ulfgar', 'Veit', 'Vondal']
@@ -69,6 +79,10 @@ export default {
         },
 
         'Elf': {
+            'statBonus': {
+                'dexterity': 2
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis']
@@ -81,6 +95,10 @@ export default {
         },
 
         'Gnome': {
+            'statBonus': {
+                'intelligence': 2
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Alston', 'Alvyn', 'Boddynock', 'Brocc', 'Burgell', 'Dimble', 'Eldon', 'Erky', 'Fonkin', 'Frug', 'Gerbo', 'Gimble', 'Glim', 'Jebeddo', 'Kellen', 'Namfoodle', 'Orryn', 'Roondar', 'Seebo', 'Sindri', 'Warryn', 'Wrenn', 'Zook']
@@ -93,6 +111,11 @@ export default {
         },
 
         'Half-Elf': {
+            'statBonus': {
+                'charisma': 2
+                //+1 to two other random stats
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Adran', 'Aelar', 'Aramil', 'Arannis', 'Aust', 'Beiro', 'Berrian', 'Carric', 'Enialis', 'Erdan', 'Erevan', 'Galinndan', 'Hadarai', 'Heian', 'Himo', 'Immeral', 'Ivellios', 'Laucian', 'Mindartis', 'Paelias', 'Peren', 'Quarion', 'Riardon', 'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis', 'Archie', 'Milo', 'Asher', 'Jasper', 'Silas', 'Theodore', 'Atticus', 'Jack', 'Aarav', 'Finn', 'Oliver', 'Felix', 'Henry', 'Wyatt', 'Aryan', 'Leo', 'Oscar', 'Levi', 'Ethan', 'James', 'Julian', 'Arthur', 'Ezra', 'Theo', 'Eli', 'Aaron', 'Liam', 'Matthew']
@@ -105,6 +128,10 @@ export default {
         },
 
         'Halfling': {
+            'statBonus': {
+                'dexterity': 2
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Alton', 'Ander, Cade', 'Corrin', 'Eldon', 'Errich', 'Finnan', 'Garret', 'Lindal', 'Lyle', 'Merric', 'Milo', 'Osborn', 'Perrin', 'Reed', 'Roscoe', 'Wellby']
@@ -117,7 +144,13 @@ export default {
         },
 
         'Half-Orc': {
+            'statBonus': {
+                'strength': 2,
+                'constitution': 1
+            },
+
             'Gender': {
+
                 'Male': {
                     'FirstNames': ['Dench', 'Feng', 'Gell', 'Henk', 'Holg', 'Imsh', 'Keth', 'Krusk', 'Mhurren', 'Ront', 'Shump', 'Thokk']
                 },
@@ -125,10 +158,13 @@ export default {
                     'FirstNames': ['Baggi', 'Emen', 'Engong', 'Kansif', 'Myev', 'Neega', 'Ovak', 'Ownka', 'Shautha', 'Sutha', 'Vola', 'Volen', 'Yevelda']
                 }
             },
-            //'LastNames': []
         },
 
         'Human': {
+            'statBonus': {
+                //all stats get +1
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Archie', 'Milo', 'Asher', 'Jasper', 'Silas', 'Theodore', 'Atticus', 'Jack', 'Aarav', 'Finn', 'Oliver', 'Felix', 'Henry', 'Wyatt', 'Aryan', 'Leo', 'Oscar', 'Levi', 'Ethan', 'James', 'Julian', 'Arthur', 'Ezra', 'Theo', 'Eli', 'Aaron', 'Liam', 'Matthew']
@@ -141,6 +177,11 @@ export default {
         },
 
         'Tiefling': {
+            'statBonus': {
+                'charisma': 2,
+                'intelligence': 1
+            },
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Akmenos', 'Amnon', 'Barakas', 'Damakos', 'Ekemon', 'Iados', 'Kairon', 'Leucis', 'Melech', 'Mordai', 'Morthos', 'Pelaios', 'Skamos', 'Therai']
@@ -149,7 +190,6 @@ export default {
                     'FirstNames': ['Akta', 'Anakis', 'Bryseis', 'Criella', 'Damaia', 'Ea', 'Kallista', 'Lerissa', 'Makaria', 'Nemeia', 'Orianna', 'Phelaia', 'Rieta']
                 }
             },
-            //'LastNames': []
         }
     }
 }
