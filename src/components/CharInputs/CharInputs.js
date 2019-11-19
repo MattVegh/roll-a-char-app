@@ -137,7 +137,7 @@ export default class CharInputs extends Component {
             console.log('remaing 4 stats are', remainingFourStats)
 
             //randomly get one of the top prioritized stats and remove it from the array
-            let firstStatToAssign = topStats.splice([Math.floor(Math.random() * topStats.length)], 1)
+            let firstStatToAssign = topStats[Math.floor(Math.random() * topStats.length)]
             console.log('first to assign', firstStatToAssign)
 
             //assign a value to the randomly gotten stat
