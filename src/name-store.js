@@ -2,7 +2,45 @@ export default {
 
     'genders': ['Male', 'Female'],
 
-    'classes': ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'],
+    'classTypes': {
+        'Barbarian': {
+            'TopStats': ['strength']
+        },
+        'Bard': {
+            'TopStats': ['charisma']
+        },
+        'Cleric': {
+            'TopStats': ['wisdom']
+        },
+        'Druid': {
+            'TopStats': ['wisdom']
+        },
+        'Fighter': {
+            'TopStats': ['strength', 'dexterity']
+        },
+        'Monk': {
+            'TopStats': ['dexterity', 'wisdom']
+        },
+        'Paladin': {
+            'TopStats': ['strength', 'constitution']
+        },
+        'Ranger': {
+            'TopStats': ['dexterity', 'wisdom']
+        },
+        'Rogue': {
+            'TopStats': ['dexterity']
+        },
+        'Sorcerer': {
+            'TopStats': ['charisma']
+        },
+        'Warlock': {
+            'TopStats': ['charisma']
+        },
+        'Wizard': {
+            'TopStats': ['intelligence']
+        }
+    },
+
 
     'races': {
         'Dragonborn': {
@@ -15,7 +53,7 @@ export default {
                 }
             },
             'LastNames': ['Clethtinthiallor', 'Daardendrian', 'Delmirev', 'Drachedandion', 'Fenkenkabradon', 'Kepeshkmolik', 'Kerrhylon', 'Kimbatuul', 'Linxakasendalor', 'Myastan', 'Nemmonis', 'Norixius', 'Ophinshtalajiir', 'Prexijandilin', 'Shestendeliath', 'Turnuroth', 'Verthisathurgiesh', 'Yarjerit']
-        }, 
+        },
         'Dwarf': {
             'Gender': {
                 'Male': {
@@ -26,7 +64,7 @@ export default {
                 }
             },
             'LastNames': ['Balderk', 'Battlehammer', 'Brawnanvil', 'Dankil', 'Fireforge', 'Frostbeard', 'Gorunn', 'Holderhek', 'Ironfist', 'Loderr', 'Lutgehr', 'Rumnaheim', 'Strakeln', 'Torunn', 'Ungart']
-        }, 
+        },
 
         'Elf': {
             'Gender': {
@@ -38,7 +76,7 @@ export default {
                 }
             },
             'LastNames': ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient']
-        }, 
+        },
 
         'Gnome': {
             'Gender': {
@@ -50,7 +88,7 @@ export default {
                 }
             },
             'LastNames': ['Beren', 'Daergel', 'Folkor', 'Garrick', 'Nackle', 'Murnig', 'Ningel', 'Raulnor', 'Scheppen', 'Timbers', 'Turen']
-        }, 
+        },
 
         'Half-Elf': {
             'Gender': {
@@ -62,8 +100,8 @@ export default {
                 }
             },
             'LastNames': ['Amakiir', 'Amastacia', 'Galanodel', 'Holimion', 'Ilphelkiir', 'Liadon', 'Meliamne', 'Naïlo', 'Siannodel', 'Xiloscient', 'Agosto', 'Astorio', 'Calabra', 'Domine', 'Falone', 'Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem', 'Sepret', 'Uuthrakt', 'Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Dundragon', 'Evenwood', 'Greycastle']
-        }, 
-        
+        },
+
         'Halfling': {
             'Gender': {
                 'Male': {
@@ -74,8 +112,8 @@ export default {
                 }
             },
             'LastNames': ['Brushgather', 'Goodbarrel', 'Greenbottle', 'High-hill', 'Hilltopple', 'Leagallow', 'Tealeaf', 'Thorngage', 'Tosscobble', 'Underbough']
-        }, 
-        
+        },
+
         'Half-Orc': {
             'Gender': {
                 'Male': {
@@ -86,8 +124,8 @@ export default {
                 }
             },
             //'LastNames': []
-        }, 
-        
+        },
+
         'Human': {
             'Gender': {
                 'Male': {
@@ -98,8 +136,8 @@ export default {
                 }
             },
             'LastNames': ['Agosto', 'Astorio', 'Calabra', 'Domine', 'Falone', 'Ankhalab', 'Anskuld', 'Fezim', 'Hahpet', 'Nathandem', 'Sepret', 'Uuthrakt', 'Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Dundragon', 'Evenwood', 'Greycastle']
-        }, 
-        
+        },
+
         'Tiefling': {
             'Gender': {
                 'Male': {
@@ -118,7 +156,7 @@ export default {
 
     // 'races': ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human', 'Tiefling'],
 
-     
+
 
 
 

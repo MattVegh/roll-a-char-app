@@ -31,7 +31,7 @@ export default class CharInputs extends Component {
                 const inputName = element.getAttribute('name')
 
                 charDetails[inputName] = element.value;
-            } 
+            }
         })
         //console.log('from handleSubmit', charDetails)
         this.handleInputFill(charDetails)
@@ -41,9 +41,9 @@ export default class CharInputs extends Component {
     handleInputFill(charDetails) {
         let races = Object.keys(nameStore.races)
         let genders = nameStore.genders
-        let classes = nameStore.classes
+        let classes = Object.keys(nameStore.classTypes)
         console.log('races are', races, 'genders are', genders, 'classes are', classes)
-        
+
         if (!charDetails.gender) {
             let randomGender = genders[Math.floor(Math.random() * genders.length)]
             //console.log('random gender is', randomGender)
@@ -52,7 +52,7 @@ export default class CharInputs extends Component {
 
         if (!charDetails.classType) {
             let randomClass = classes[Math.floor(Math.random() * classes.length)]
-            //console.log('random class is', randomClass)
+            console.log('random class is', randomClass)
             charDetails.classType = randomClass
         }
 
@@ -69,7 +69,7 @@ export default class CharInputs extends Component {
 
             let lastNameArray = nameStore.races[charDetails.race].LastNames
             let randomLastName = lastNameArray ? lastNameArray[Math.floor(Math.random() * lastNameArray.length)] : ''
-            
+
             charDetails.name = `${randomFirstName} ${randomLastName}`
 
             // console.log('firstname array', firstNameArray)
@@ -77,10 +77,10 @@ export default class CharInputs extends Component {
             // console.log('first name is', randomFirstName)
             // console.log('last name', randomLastName)
 
-           
+
 
         }
-        
+
         console.log('from handleInputFill', charDetails)
         this.generateStats(charDetails)
         document.querySelector('.roll-display').classList.remove('hidden')
@@ -99,7 +99,7 @@ export default class CharInputs extends Component {
                 console.log('rolls are', dieArray)
             }
             dieArray.sort().shift()
-            
+
             console.log('diearray', dieArray)
             let stat = dieArray[0] + dieArray[1] + dieArray[2]
             statArray.push(stat)
@@ -113,110 +113,154 @@ export default class CharInputs extends Component {
     }
 
     assignStats = (charDetails) => {
-        //find class
-        //each class has 2 prioritized stats
-        //get 2 highest stats, randomly assign them to those priorities
-        //randomly assign remaining 4 stats
+        console.log('from assignStats', charDetails)
         charDetails.stats.sort((a, b) => a - b)
         console.log('stats', charDetails.stats)
-        
-        let bestTwoStats = charDetails.stats.slice(4)
-        console.log('2 highest stats are', bestTwoStats)
-        let remainingFourStats = charDetails.stats.slice(0, 4)
-        console.log('remaing 4 stats are', remainingFourStats)
 
-        if (charDetails.classType === 'Barbarian' || 'Fighter') {
-            //top str
-            charDetails.stats.strength = charDetails.stats.pop()
-            console.log('str', charDetails.stats.strength)
-            console.log('remaining', charDetails.stats)
+        let topStats = nameStore.classTypes[charDetails.classType].TopStats
 
-            charDetails.stats.dexterity = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            console.log('remaining', charDetails.stats)
+        //find classType
+        //assign highest stats to TopStats
+        //randomly assign remainingFourStats to other stats
 
-            charDetails.stats.constitution = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            console.log('remaining', charDetails.stats)
+        console.log('top stat for', charDetails.classType, 'is', topStats)
 
-            charDetails.stats.intelligence = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            console.log('remaining', charDetails.stats)
+        if (topStats.length == 2) {
+            console.log('class has 2 top stats')
 
-            charDetails.stats.wisdom = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            console.log('remaining', charDetails.stats)
+            //gets the last 2 values (2 highest) in the sorted array
+            let bestTwoStats = charDetails.stats.slice(4)
+            console.log('2 highest rtats are', bestTwoStats)
 
-            charDetails.stats.charisma = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            console.log('remaining', charDetails.stats)
-            
+            //gets the first 4 values (4 lowerst) in the sorted array
+            let remainingFourStats = charDetails.stats.slice(0, 4)
+            console.log('remaing 4 stats are', remainingFourStats)
+
+            //randomly get one of the top prioritized stats and remove it from the array
+            let firstStatToAssign = topStats.splice([Math.floor(Math.random() * topStats.length)], 1)
+            console.log('first to assign', firstStatToAssign)
+
+            //assign a value to the randomly gotten stat
+            charDetails.stats[firstStatToAssign] = bestTwoStats.pop()
+            console.log('best stat remaining', bestTwoStats, 'and', topStats)
+
+            //assign the remaining stat the next value
+            charDetails.stats[topStats] = bestTwoStats[0]
+
+            //randomly get a non prioritized stat
+            // let lesserStat = remainingFourStats.splice([Math.floor(Math.random() * topStats.length)], 1)
+            // charDetails.stats[lesserStat] = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+            // console.log('remaining', charDetails.stats)
+
         }
 
-        if (charDetails.classType === 'Bard' || 'Sorcerer' || 'Warlock') {
-            //top cha
+        if (topStats.length == 1) {
+            console.log('class has 1 top stat')
+
+            let bestStat = charDetails.stats.slice(5)
+            console.log('best stat is', bestStat)
+
+            let remainingFiveStats = charDetails.stats.slice(0, 5)
+            console.log('remaining 5 stats are', remainingFiveStats)
+
+            charDetails.stats[topStats] = bestStat[0]
+
         }
 
-        if (charDetails.classType === 'Cleric' || 'Druid') {
-            //top wis
-        }
 
-        if (charDetails.classType === 'Rogue') {
-            //top dex
-        }
+        // if (charDetails.classType === 'Barbarian' || 'Fighter') {
+        //     //top str
+        //     charDetails.stats.strength = charDetails.stats.pop()
+        //     console.log('str', charDetails.stats.strength)
+        //     console.log('remaining', charDetails.stats)
 
-        if (charDetails.classType === 'Monk') {
-            //top dex and wis
-        }
+        //     charDetails.stats.dexterity = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     console.log('remaining', charDetails.stats)
 
-        if (charDetails.classType === 'Paladin') {
-            //top str and cha
-        }
+        //     charDetails.stats.constitution = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     console.log('remaining', charDetails.stats)
 
-        if (charDetails.classType === 'Ranger') {
-            //top dex and wis
-        }
+        //     charDetails.stats.intelligence = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     console.log('remaining', charDetails.stats)
 
-        if (charDetails.classType === 'Wizard') {
-            //top int
-        }
+        //     charDetails.stats.wisdom = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     console.log('remaining', charDetails.stats)
+
+        //     charDetails.stats.charisma = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     console.log('remaining', charDetails.stats)
+
+        // }
+
+        // if (charDetails.classType === 'Bard' || 'Sorcerer' || 'Warlock') {
+        //     //top cha
+        // }
+
+        // if (charDetails.classType === 'Cleric' || 'Druid') {
+        //     //top wis
+        // }
+
+        // if (charDetails.classType === 'Rogue') {
+        //     //top dex
+        // }
+
+        // if (charDetails.classType === 'Monk') {
+        //     //top dex and wis
+        // }
+
+        // if (charDetails.classType === 'Paladin') {
+        //     //top str and cha
+        // }
+
+        // if (charDetails.classType === 'Ranger') {
+        //     //top dex and wis
+        // }
+
+        // if (charDetails.classType === 'Wizard') {
+        //     //top int
+        // }
 
         this.addRaceBonus(charDetails)
     }
 
     addRaceBonus = (charDetails) => {
+        console.log('from addRaceBonus', charDetails)
+        // if (charDetails.race === 'Dragonborn') {
+        //     charDetails.stats.strength += 2
+        //     charDetails.stats.charisma++
+        // }
 
-        if (charDetails.race === 'Dragonborn') {
-            charDetails.stats.strength = charDetails.stats.strength + 2
-            charDetails.stats.charisma++
-        }
+        // if (charDetails.race === 'Dwarf') {
+        //     charDetails.stats.constitution += 2
+        // }
 
-        if (charDetails.race === 'Dwarf') {
+        // if (charDetails.race === 'Elf' || 'Halfling') {
+        //     charDetails.stats.dexterity += 2
+        // }
 
-        }
+        // if (charDetails.race === 'Gnome') {
+        //     charDetails.stats.intelligence += 2
+        // }
 
-        if (charDetails.race === 'Elf') {
-            
-        }
+        // if (charDetails.race === 'Half-Elf') {
+        //     charDetails.stats.charisma += 2
 
-        if (charDetails.race === 'Gnome') {
-            
-        }
+        // }
 
-        if (charDetails.race === 'Half-Elf') {
-            
-        }
+        // if (charDetails.race === 'Half-Orc') {
+        //     charDetails.stats.strength += 2
+        //     charDetails.stats.constitution++
+        // }
 
-        if (charDetails.race === 'Halfling') {
-            
-        }
+        // if (charDetails.race === 'Human') {
+        //     for (let i = 0; i < charDetails.stats.length; i++) {
+        //         charDetails.stats[i]++
+        //     }
+        // }
 
-        if (charDetails.race === 'Half-Orc') {
-            
-        }
-
-        if (charDetails.race === 'Human') {
-            
-        }
-
-        if (charDetails.race === 'Tiefling') {
-            
-        }
+        // if (charDetails.race === 'Tiefling') {
+        //     charDetails.stats.charisma += 2
+        //     charDetails.stats.intelligence++
+        // }
         this.props.updateCurrentRoll(charDetails)
     }
 
