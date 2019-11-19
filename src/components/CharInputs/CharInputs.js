@@ -114,58 +114,83 @@ export default class CharInputs extends Component {
 
     assignStats = (charDetails) => {
         console.log('from assignStats', charDetails)
-        charDetails.stats.sort((a, b) => a - b)
+        //charDetails.stats.sort((a, b) => a - b)
         console.log('stats', charDetails.stats)
+
+        let statNames = nameStore.statNames
+        console.log('stat names are', statNames)
 
         let topStats = nameStore.classTypes[charDetails.classType].TopStats
 
-        //find classType
-        //assign highest stats to TopStats
-        //randomly assign remainingFourStats to other stats
+        if (Math.floor(Math.random() * 1) == 0) {
+            topStats.sort((a, b) => a - b)
+        } else {
+            topStats.sort((a, b) => b - a)
+        }
 
         console.log('top stat for', charDetails.classType, 'is', topStats)
 
-        if (topStats.length == 2) {
-            console.log('class has 2 top stats')
+        topStats.forEach(stat => {
+            console.log('stat is', stat)
+            let topRoll = Math.max(...charDetails.stats)
+            charDetails.stats.splice(charDetails.stats.indexOf(topRoll), 1)
+            charDetails.stats[stat] = topRoll
+            console.log('top roll is', topRoll)
+            console.log('char details', charDetails.stats)
+        });
 
-            //gets the last 2 values (2 highest) in the sorted array
-            let bestTwoStats = charDetails.stats.slice(4)
-            console.log('2 highest rtats are', bestTwoStats)
+        console.log('remaning stats', charDetails.stats)
 
-            //gets the first 4 values (4 lowerst) in the sorted array
-            let remainingFourStats = charDetails.stats.slice(0, 4)
-            console.log('remaing 4 stats are', remainingFourStats)
+        // statNames.forEach(stat => {
+        //     console.log('stat is', stat)
+        //     let roll = charDetails.stats[Math.floor(Math.random() * charDetails.stats.length)]
+        //     console.log('rollll', roll)
+        // })
 
-            //randomly get one of the top prioritized stats and remove it from the array
-            let firstStatToAssign = topStats[Math.floor(Math.random() * topStats.length)]
-            console.log('first to assign', firstStatToAssign)
 
-            //assign a value to the randomly gotten stat
-            charDetails.stats[firstStatToAssign] = bestTwoStats.pop()
-            console.log('best stat remaining', bestTwoStats, 'and', topStats)
+        
 
-            //assign the remaining stat the next value
-            charDetails.stats[topStats] = bestTwoStats[0]
+        // if (topStats.length == 2) {
+        //     console.log('class has 2 top stats')
 
-            //randomly get a non prioritized stat
-            // let lesserStat = remainingFourStats.splice([Math.floor(Math.random() * topStats.length)], 1)
-            // charDetails.stats[lesserStat] = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-            // console.log('remaining', charDetails.stats)
+        //     //gets the last 2 values (2 highest) in the sorted array
+        //     let bestTwoStats = charDetails.stats.slice(4)
+        //     console.log('2 highest rtats are', bestTwoStats)
 
-        }
+        //     //gets the first 4 values (4 lowerst) in the sorted array
+        //     let remainingFourStats = charDetails.stats.slice(0, 4)
+        //     console.log('remaing 4 stats are', remainingFourStats)
 
-        if (topStats.length == 1) {
-            console.log('class has 1 top stat')
+        //     //randomly get one of the top prioritized stats and remove it from the array
+        //     let firstStatToAssign = topStats[Math.floor(Math.random() * topStats.length)]
+        //     console.log('first to assign', firstStatToAssign)
 
-            let bestStat = charDetails.stats.slice(5)
-            console.log('best stat is', bestStat)
+        //     //assign a value to the randomly gotten stat
+        //     charDetails.stats[firstStatToAssign] = bestTwoStats.pop()
+        //     console.log('best stat remaining', bestTwoStats, 'and', topStats)
 
-            let remainingFiveStats = charDetails.stats.slice(0, 5)
-            console.log('remaining 5 stats are', remainingFiveStats)
+        //     //assign the remaining stat the next value
+        //     charDetails.stats[topStats] = bestTwoStats[0]
 
-            charDetails.stats[topStats] = bestStat[0]
+        //     //randomly get a non prioritized stat
+        //     // let lesserStat = remainingFourStats.splice([Math.floor(Math.random() * topStats.length)], 1)
+        //     // charDetails.stats[lesserStat] = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
+        //     // console.log('remaining', charDetails.stats)
 
-        }
+        // }
+
+        // if (topStats.length == 1) {
+        //     console.log('class has 1 top stat')
+
+        //     let bestStat = Math.max(parseInt(charDetails.stats))
+        //     console.log('best stat is', bestStat)
+
+        //     let remainingFiveStats = charDetails.stats.slice(0, 5)
+        //     console.log('remaining 5 stats are', remainingFiveStats)
+
+        //     charDetails.stats[topStats] = bestStat[0]
+
+        // }
 
 
         // if (charDetails.classType === 'Barbarian' || 'Fighter') {

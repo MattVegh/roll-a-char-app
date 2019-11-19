@@ -2,6 +2,8 @@ export default {
 
     'genders': ['Male', 'Female'],
 
+    'statNames': ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'],
+    
     'classTypes': {
         'Barbarian': {
             'TopStats': ['strength']
