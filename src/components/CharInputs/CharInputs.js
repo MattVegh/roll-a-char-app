@@ -156,8 +156,8 @@ export default class CharInputs extends Component {
 
         statBonusName.forEach(stat => {
             console.log('stat to modify is', stat)
-            console.log('char deets stat', charDetails.stats[stat])
             console.log('statbonusvalue', statBonusValue[0])
+            
             let modifiedStat = charDetails.stats[stat] + statBonusValue.shift()
             console.log(stat, 'after modifying is', modifiedStat)
         });
