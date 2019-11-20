@@ -50,7 +50,7 @@ export default {
                 'strength': 2,
                 'charisma': 1
             },
-            
+
             'Gender': {
                 'Male': {
                     'FirstNames': ['Arjhan', 'Balasar', 'Bharash', 'Donaar', 'Ghesh', 'Heskan', 'Kriv', 'Medrash', 'Mehen', 'Nadarr', 'Pandjed', 'Patrin', 'Rhogar', 'Shamash', 'Shedinn', 'Tarhun', 'Torinn']
@@ -162,7 +162,12 @@ export default {
 
         'Human': {
             'statBonus': {
-                //all stats get +1
+                'strength': 1,
+                'dexterity': 1,
+                'constitution': 1,
+                'intelligence': 1,
+                'wisdom': 1,
+                'charisma': 1
             },
 
             'Gender': {

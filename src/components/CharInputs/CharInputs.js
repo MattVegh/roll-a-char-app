@@ -4,24 +4,6 @@ import nameStore from '../../name-store'
 
 export default class CharInputs extends Component {
 
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const target = event.target
-    //     let name = (target['name'].value) ? (target['name'].value) : 'test'
-    //     let gender = (target['gender'].value) ? (target['gender'].value) : nameStore.genders[Math.floor(Math.random() * nameStore.genders.length)]
-    //     let race = (target['race'].value) ? (target['race'].value) : nameStore.races[Math.floor(Math.random() * nameStore.races.length)]
-    //     let classType = (target['class-type'].value) ? (target['class-type'].value) : nameStore.classes[Math.floor(Math.random() * nameStore.classes.length)]
-
-    //     let charDetails = { name, gender, race, classType }
-
-    //     console.log('from CharInPuts', charDetails)
-    //     this.props.updateCurrentRoll(charDetails)
-    //     document.querySelector('.roll-display').classList.remove('hidden')
-    //     this.generateStats()
-
-    // }
-
     handleSubmit = (event) => {
         event.preventDefault()
         const charDetails = {}
@@ -113,11 +95,11 @@ export default class CharInputs extends Component {
     }
 
     assignStats = (charDetails) => {
-        console.log('from assignStats', charDetails)
-        console.log('stats', charDetails.stats)
+        // console.log('from assignStats', charDetails)
+        // console.log('stats', charDetails.stats)
 
         let statNames = nameStore.statNames
-        console.log('stat names are', statNames)
+        // console.log('stat names are', statNames)
 
         let topStats = nameStore.classTypes[charDetails.classType].TopStats
 
@@ -138,11 +120,11 @@ export default class CharInputs extends Component {
             charDetails.stats.splice(charDetails.stats.indexOf(topRoll), 1)
             charDetails.stats[stat] = topRoll
 
-            console.log('top roll is', topRoll)
-            console.log('char details', charDetails.stats)
+            // console.log('top roll is', topRoll)
+            // console.log('char details', charDetails.stats)
         });
 
-        console.log('remaning stats', charDetails.stats)
+        //console.log('remaning stats', charDetails.stats)
 
         //assign values to the remaining stats
         statNames.forEach(stat => {
@@ -158,119 +140,28 @@ export default class CharInputs extends Component {
             }
         })
 
-
-        
-
-        // if (topStats.length == 2) {
-        //     console.log('class has 2 top stats')
-
-        //     //gets the last 2 values (2 highest) in the sorted array
-        //     let bestTwoStats = charDetails.stats.slice(4)
-        //     console.log('2 highest rtats are', bestTwoStats)
-
-        //     //gets the first 4 values (4 lowerst) in the sorted array
-        //     let remainingFourStats = charDetails.stats.slice(0, 4)
-        //     console.log('remaing 4 stats are', remainingFourStats)
-
-        //     //randomly get one of the top prioritized stats and remove it from the array
-        //     let firstStatToAssign = topStats[Math.floor(Math.random() * topStats.length)]
-        //     console.log('first to assign', firstStatToAssign)
-
-        //     //assign a value to the randomly gotten stat
-        //     charDetails.stats[firstStatToAssign] = bestTwoStats.pop()
-        //     console.log('best stat remaining', bestTwoStats, 'and', topStats)
-
-        //     //assign the remaining stat the next value
-        //     charDetails.stats[topStats] = bestTwoStats[0]
-
-        //     //randomly get a non prioritized stat
-        //     // let lesserStat = remainingFourStats.splice([Math.floor(Math.random() * topStats.length)], 1)
-        //     // charDetails.stats[lesserStat] = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     // console.log('remaining', charDetails.stats)
-
-        // }
-
-        // if (topStats.length == 1) {
-        //     console.log('class has 1 top stat')
-
-        //     let bestStat = Math.max(parseInt(charDetails.stats))
-        //     console.log('best stat is', bestStat)
-
-        //     let remainingFiveStats = charDetails.stats.slice(0, 5)
-        //     console.log('remaining 5 stats are', remainingFiveStats)
-
-        //     charDetails.stats[topStats] = bestStat[0]
-
-        // }
-
-
-        // if (charDetails.classType === 'Barbarian' || 'Fighter') {
-        //     //top str
-        //     charDetails.stats.strength = charDetails.stats.pop()
-        //     console.log('str', charDetails.stats.strength)
-        //     console.log('remaining', charDetails.stats)
-
-        //     charDetails.stats.dexterity = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     console.log('remaining', charDetails.stats)
-
-        //     charDetails.stats.constitution = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     console.log('remaining', charDetails.stats)
-
-        //     charDetails.stats.intelligence = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     console.log('remaining', charDetails.stats)
-
-        //     charDetails.stats.wisdom = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     console.log('remaining', charDetails.stats)
-
-        //     charDetails.stats.charisma = charDetails.stats.splice(Math.floor(Math.random() * charDetails.stats.length), 1)[0]
-        //     console.log('remaining', charDetails.stats)
-
-        // }
-
         this.addRaceBonus(charDetails)
     }
 
     addRaceBonus = (charDetails) => {
         console.log('from addRaceBonus', charDetails)
 
-        
-        // if (charDetails.race === 'Dragonborn') {
-        //     charDetails.stats.strength += 2
-        //     charDetails.stats.charisma++
-        // }
+        let statBonuses = nameStore.races[charDetails.race].statBonus
+        console.log('stat bonuses are', statBonuses)
 
-        // if (charDetails.race === 'Dwarf') {
-        //     charDetails.stats.constitution += 2
-        // }
+        let statBonusName = Object.keys(nameStore.races[charDetails.race].statBonus)
+        let statBonusValue = Object.values(nameStore.races[charDetails.race].statBonus)
+        console.log('stat bonuses for', charDetails.race, 'are', statBonusName, 'with a value of', statBonusValue)
+        console.log('stats for current character are', charDetails.stats)
 
-        // if (charDetails.race === 'Elf' || 'Halfling') {
-        //     charDetails.stats.dexterity += 2
-        // }
+        statBonusName.forEach(stat => {
+            console.log('stat to modify is', stat)
+            console.log('char deets stat', charDetails.stats[stat])
+            console.log('statbonusvalue', statBonusValue[0])
+            let modifiedStat = charDetails.stats[stat] + statBonusValue.shift()
+            console.log(stat, 'after modifying is', modifiedStat)
+        });
 
-        // if (charDetails.race === 'Gnome') {
-        //     charDetails.stats.intelligence += 2
-        // }
-
-        // if (charDetails.race === 'Half-Elf') {
-        //     charDetails.stats.charisma += 2
-
-        // }
-
-        // if (charDetails.race === 'Half-Orc') {
-        //     charDetails.stats.strength += 2
-        //     charDetails.stats.constitution++
-        // }
-
-        // if (charDetails.race === 'Human') {
-        //     for (let i = 0; i < charDetails.stats.length; i++) {
-        //         charDetails.stats[i]++
-        //     }
-        // }
-
-        // if (charDetails.race === 'Tiefling') {
-        //     charDetails.stats.charisma += 2
-        //     charDetails.stats.intelligence++
-        // }
         this.props.updateCurrentRoll(charDetails)
     }
 
