@@ -194,56 +194,56 @@ export default class CharInputs extends Component {
     }
 
     calculateModifier = (charDetails) => {
-        console.log('in calc mod', charDetails)
-        console.log('calc mod', charDetails.stats)
-        console.log('calc mod map', Object.keys(charDetails.stats).map(stat => charDetails.stats[stat]))
+        // console.log('in calc mod', charDetails)
+        // console.log('calc mod', charDetails.stats)
+        // console.log('calc mod map', Object.keys(charDetails.stats).map(stat => charDetails.stats[stat]))
 
-        let modifiers = []
+        // let modifiers = []
 
 
-        Object.keys(charDetails.stats).map(stat => {
-            if (charDetails.stats[stat] > 3 && charDetails.stats[stat] < 6) {
-                console.log('calc mod -3 for', charDetails.stats[stat])
-                modifiers.push('-3')
-                console.log('the mods are', modifiers)
+        // Object.keys(charDetails.stats).map(stat => {
+        //     if (charDetails.stats[stat] > 3 && charDetails.stats[stat] < 6) {
+        //         console.log('calc mod -3 for', charDetails.stats[stat])
+        //         modifiers.push('-3')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 5 && charDetails.stats[stat] < 8) {
-                console.log('calc mod -2 for', charDetails.stats[stat])
-                modifiers.push('-2')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 5 && charDetails.stats[stat] < 8) {
+        //         console.log('calc mod -2 for', charDetails.stats[stat])
+        //         modifiers.push('-2')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 7 && charDetails.stats[stat] < 10) {
-                console.log('calc mod -1 for', charDetails.stats[stat])
-                modifiers.push('-1')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 7 && charDetails.stats[stat] < 10) {
+        //         console.log('calc mod -1 for', charDetails.stats[stat])
+        //         modifiers.push('-1')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 9 && charDetails.stats[stat] < 12) {
-                console.log('calc mod 0 for', charDetails.stats[stat])
-                modifiers.push('0')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 9 && charDetails.stats[stat] < 12) {
+        //         console.log('calc mod 0 for', charDetails.stats[stat])
+        //         modifiers.push('0')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 11 && charDetails.stats[stat] < 14) {
-                console.log('calc mod +1 for', charDetails.stats[stat])
-                modifiers.push('+1')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 11 && charDetails.stats[stat] < 14) {
+        //         console.log('calc mod +1 for', charDetails.stats[stat])
+        //         modifiers.push('+1')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 13 && charDetails.stats[stat] < 16) {
-                console.log('calc mod +2 for', charDetails.stats[stat])
-                modifiers.push('+2')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 13 && charDetails.stats[stat] < 16) {
+        //         console.log('calc mod +2 for', charDetails.stats[stat])
+        //         modifiers.push('+2')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 15 && charDetails.stats[stat] < 18) {
-                console.log('calc mod +3 for', charDetails.stats[stat])
-                modifiers.push('+3')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 15 && charDetails.stats[stat] < 18) {
+        //         console.log('calc mod +3 for', charDetails.stats[stat])
+        //         modifiers.push('+3')
+        //         console.log('the mods are', modifiers)
 
-            } else if (charDetails.stats[stat] > 17 && charDetails.stats[stat] < 20) {
-                console.log('calc mod +4 for', charDetails.stats[stat])
-                modifiers.push('+4')
-                console.log('the mods are', modifiers)
+        //     } else if (charDetails.stats[stat] > 17 && charDetails.stats[stat] < 20) {
+        //         console.log('calc mod +4 for', charDetails.stats[stat])
+        //         modifiers.push('+4')
+        //         console.log('the mods are', modifiers)
 
-            }
-        })
+        //     }
+        // })
 
         this.props.updateCurrentRoll(charDetails)
     }
