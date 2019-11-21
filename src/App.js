@@ -23,7 +23,16 @@ class App extends Component {
         intelligence: '',
         wisdom: '',
         charisma: '',
-      }
+      },
+      originalRolls: {
+        strength: '',
+        dexterity: '', 
+        constitution: '',
+        intelligence: '',
+        wisdom: '',
+        charisma: ''
+      },
+      modifier: '',
     }
   }
 
@@ -41,14 +50,31 @@ class App extends Component {
           intelligence: charDetails.stats.intelligence,
           wisdom: charDetails.stats.wisdom,
           charisma: charDetails.stats.charisma,
+        },
+        originalRolls: {
+          strength: charDetails.originalRolls.strength,
+          dexterity: charDetails.originalRolls.dexterity, 
+          constitution: charDetails.originalRolls.constitution,
+          intelligence: charDetails.originalRolls.intelligence,
+          wisdom: charDetails.originalRolls.wisdom,
+          charisma: charDetails.originalRolls.charisma
+        },
+        modifier: {
+          // strength: charDetails.modifier.strength,
+          // dexterity: charDetails.modifier.dexterity, 
+          // constitution: charDetails.modifier.constitution,
+          // intelligence: charDetails.modifier.intelligence,
+          // wisdom: charDetails.modifier.wisdom,
+          // charisma: charDetails.modifier.charisma
         }
       }
     })
+    
   }
 
 
   render() {
-
+    console.log('currentRoll in App.js is', this.state.currentRoll)
     return (
       <div className='App'>
         <Nav />
