@@ -1,55 +1,60 @@
 import React, { Component } from 'react'
 import './RollDisplay.css'
+import nameStore from '../../name-store'
 
 export default class RollDisplay extends Component {
-//  state = {
-//      modifier: ''
-//  }
 
-calculateModifier = (statScore) => {
-    console.log('calc mod', this.props.currentRoll.stats)
+    calculateModifier = (statScore) => {
+        //console.log('calc mod', this.props.currentRoll.stats)
 
         if (statScore > 3 && statScore < 6) {
-            console.log('calc mod -3 for', statScore)
+            //console.log('calc mod -3 for', statScore)
             return '-3'
 
 
         } else if (statScore > 5 && statScore < 8) {
-            console.log('calc mod -2 for', statScore)
+            //console.log('calc mod -2 for', statScore)
             return '-2'
 
         } else if (statScore > 7 && statScore < 10) {
-            console.log('calc mod -1 for', statScore)
+            //console.log('calc mod -1 for', statScore)
             return '-1'
 
         } else if (statScore > 9 && statScore < 12) {
-            console.log('calc mod 0 for', statScore)
+            //console.log('calc mod 0 for', statScore)
             return '0'
 
         } else if (statScore > 11 && statScore < 14) {
-            console.log('calc mod +1 for', statScore)
+            //console.log('calc mod +1 for', statScore)
             return '+1'
 
         } else if (statScore > 13 && statScore < 16) {
-            console.log('calc mod +2 for', statScore)
+            //console.log('calc mod +2 for', statScore)
             return '+2'
 
         } else if (statScore > 15 && statScore < 18) {
-            console.log('calc mod +3 for', statScore)
+            //console.log('calc mod +3 for', statScore)
             return '+3'
 
         } else if (statScore > 17 && statScore < 20) {
-            console.log('calc mod +4 for', statScore)
+            //console.log('calc mod +4 for', statScore)
             return '+4'
 
         }
-    
-}
+
+    }
+
+    calculateDifference = (beforeBonus, afterBonus) => {
+        return Math.abs(beforeBonus - afterBonus)
+
+    }
 
     render() {
 
-        
-        
+        console.log('trying to map', Object.keys(this.props.currentRoll.stats))
+        console.log('namestore stat names', nameStore.statNames)
+        let mapThis = ['test', 'string', 'map', 'dont', 'work']
+        let orMapThis = [1, 2, 3, 4, 5]
         console.log('from RollDisplay', this.props.currentRoll)
 
         return (
@@ -66,18 +71,18 @@ calculateModifier = (statScore) => {
                             <th>Total</th>
                             <th>Mod</th>
                         </tr>
-                        {/* {Object.keys(this.props.currentRoll.stats).map(stat => <tr>
-                            <td>{(this.props.currentRoll.stats[Object.keys(stat)])}</td>
+                        {orMapThis.map(stat => <tr>
+                            <td>{orMapThis[stat]}</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        )} */}
+                        )}
                         <tr>
                             <td>{Object.keys(this.props.currentRoll.stats)[0]}</td>
                             <td>{Object.values(this.props.currentRoll.originalRolls)[0]}</td>
-                            <td></td>
+                            <td>{this.calculateDifference(this.props.currentRoll.originalRolls.strength, this.props.currentRoll.stats.strength)}</td>
                             <td>{this.props.currentRoll.stats.strength}</td>
                             <td>{this.calculateModifier(this.props.currentRoll.stats.strength)}</td>
                         </tr>

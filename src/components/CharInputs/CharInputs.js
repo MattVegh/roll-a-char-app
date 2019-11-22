@@ -15,7 +15,7 @@ export default class CharInputs extends Component {
                 charDetails[inputName] = element.value;
             }
         })
-        console.log('from handleSubmit', charDetails)
+        //console.log('from handleSubmit', charDetails)
         this.handleInputFill(charDetails)
 
     };
@@ -100,8 +100,8 @@ export default class CharInputs extends Component {
     }
 
     assignStats = (charDetails) => {
-        console.log('from assignStats', charDetails)
-        console.log('stats', charDetails.stats)
+        //console.log('from assignStats', charDetails)
+        //console.log('stats', charDetails.stats)
 
         let statNames = nameStore.statNames
         // console.log('stat names are', statNames)
@@ -157,7 +157,7 @@ export default class CharInputs extends Component {
 
         let statBonusName = Object.keys(nameStore.races[charDetails.race].statBonus)
         let statBonusValue = Object.values(nameStore.races[charDetails.race].statBonus)
-        console.log('stat bonuses for', charDetails.race, 'are', statBonusName, 'with a value of', statBonusValue)
+        //console.log('stat bonuses for', charDetails.race, 'are', statBonusName, 'with a value of', statBonusValue)
         //console.log('stats for current character are', charDetails.stats)
 
         statBonusName.forEach(stat => {
@@ -190,70 +190,16 @@ export default class CharInputs extends Component {
             }
         }
 
-        this.calculateModifier(charDetails)
-    }
-
-    calculateModifier = (charDetails) => {
-        // console.log('in calc mod', charDetails)
-        // console.log('calc mod', charDetails.stats)
-        // console.log('calc mod map', Object.keys(charDetails.stats).map(stat => charDetails.stats[stat]))
-
-        // let modifiers = []
-
-
-        // Object.keys(charDetails.stats).map(stat => {
-        //     if (charDetails.stats[stat] > 3 && charDetails.stats[stat] < 6) {
-        //         console.log('calc mod -3 for', charDetails.stats[stat])
-        //         modifiers.push('-3')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 5 && charDetails.stats[stat] < 8) {
-        //         console.log('calc mod -2 for', charDetails.stats[stat])
-        //         modifiers.push('-2')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 7 && charDetails.stats[stat] < 10) {
-        //         console.log('calc mod -1 for', charDetails.stats[stat])
-        //         modifiers.push('-1')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 9 && charDetails.stats[stat] < 12) {
-        //         console.log('calc mod 0 for', charDetails.stats[stat])
-        //         modifiers.push('0')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 11 && charDetails.stats[stat] < 14) {
-        //         console.log('calc mod +1 for', charDetails.stats[stat])
-        //         modifiers.push('+1')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 13 && charDetails.stats[stat] < 16) {
-        //         console.log('calc mod +2 for', charDetails.stats[stat])
-        //         modifiers.push('+2')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 15 && charDetails.stats[stat] < 18) {
-        //         console.log('calc mod +3 for', charDetails.stats[stat])
-        //         modifiers.push('+3')
-        //         console.log('the mods are', modifiers)
-
-        //     } else if (charDetails.stats[stat] > 17 && charDetails.stats[stat] < 20) {
-        //         console.log('calc mod +4 for', charDetails.stats[stat])
-        //         modifiers.push('+4')
-        //         console.log('the mods are', modifiers)
-
-        //     }
-        // })
-
         this.props.updateCurrentRoll(charDetails)
     }
 
 
+
     render() {
-        // let classTypes = Object.keys(nameStore)
-        // let races = Object.keys(nameStore.races)
-        // console.log('classTypes are', classTypes)
-        // console.log('nameStore test', nameStore.races)
+        let classToMap = Object.keys(nameStore.classTypes)
+        let races = Object.keys(nameStore.races)
+        console.log('classes to map are', classToMap)
+        console.log('nameStore test', nameStore.races)
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
                 <div className='name-gender-box'>
@@ -271,8 +217,9 @@ export default class CharInputs extends Component {
                 <label htmlFor='race'>Race:</label>
                 <select className='race-input' name='race'>
                     <option value=''>--</option>
-                    {/* {races.map(race => (<option value={races[race]}>{races[race]}</option>))} */}
-                    <option value='Dragonborn'>Dragonborn</option>
+                    
+                    {races.map(race => <option value={races[race]}>{races[race]}</option>)}
+                    {/* <option value='Dragonborn'>Dragonborn</option>
                     <option value='Dwarf'>Dwarf</option>
                     <option value='Elf'>Elf</option>
                     <option value='Gnome'>Gnome</option>
@@ -280,14 +227,17 @@ export default class CharInputs extends Component {
                     <option value='Halfling'>Halfling</option>
                     <option value='Half-Orc'>Half-Orc</option>
                     <option value='Human'>Human</option>
-                    <option value='Tiefling'>Tiefling</option>
+                    <option value='Tiefling'>Tiefling</option> */}
                 </select>
 
                 <label htmlFor='class-type'>Class:</label>
                 <select className='class-input' name='classType'>
                     <option value=''>--</option>
-                    {/* {classTypes.map(classType => (<option value={classTypes[classType]}>{classTypes[classType]}</option>))} */}
-                    <option value='Barbarian'>Barbarian</option>
+                    {/* {Object.keys(nameStore.classTypes).map(function(key) {
+                        return <option value={nameStore.classTypes[key]}>{Object.keys(nameStore.classTypes[key])}</option>
+                    })} */}
+                    {classToMap.map(classType => <option value={classToMap[classType]}>{classToMap[classType]}</option>)}
+                    {/* <option value='Barbarian'>Barbarian</option>
                     <option value='Bard'>Bard</option>
                     <option value='Cleric'>Cleric</option>
                     <option value='Druid'>Druid</option>
@@ -298,7 +248,7 @@ export default class CharInputs extends Component {
                     <option value='Rogue'>Rogue</option>
                     <option value='Sorcerer'>Sorcerer</option>
                     <option value='Warlock'>Warlock</option>
-                    <option value='Wizard'>Wizard</option>
+                    <option value='Wizard'>Wizard</option> */}
                 </select>
 
                 <button >ROLL!</button>

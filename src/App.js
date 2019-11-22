@@ -32,7 +32,7 @@ class App extends Component {
         wisdom: '',
         charisma: ''
       },
-      modifier: '',
+     
     }
   }
 
@@ -59,14 +59,6 @@ class App extends Component {
           wisdom: charDetails.originalRolls.wisdom,
           charisma: charDetails.originalRolls.charisma
         },
-        modifier: {
-          // strength: charDetails.modifier.strength,
-          // dexterity: charDetails.modifier.dexterity, 
-          // constitution: charDetails.modifier.constitution,
-          // intelligence: charDetails.modifier.intelligence,
-          // wisdom: charDetails.modifier.wisdom,
-          // charisma: charDetails.modifier.charisma
-        }
       }
     })
     
