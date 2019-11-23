@@ -45,6 +45,9 @@ export default class RollDisplay extends Component {
     }
 
     calculateDifference = (beforeBonus, afterBonus) => {
+        if( Math.abs(beforeBonus - afterBonus) == 0 ) {
+            return null
+        } else
         return Math.abs(beforeBonus - afterBonus)
 
     }
@@ -53,8 +56,7 @@ export default class RollDisplay extends Component {
 
         console.log('trying to map', Object.keys(this.props.currentRoll.stats))
         console.log('namestore stat names', nameStore.statNames)
-        let mapThis = ['test', 'string', 'map', 'dont', 'work']
-        let orMapThis = [1, 2, 3, 4, 5]
+        let mapThis = Object.keys(this.props.currentRoll.stats)
         console.log('from RollDisplay', this.props.currentRoll)
 
         return (
@@ -71,15 +73,17 @@ export default class RollDisplay extends Component {
                             <th>Total</th>
                             <th>Mod</th>
                         </tr>
-                        {orMapThis.map(stat => <tr>
-                            <td>{orMapThis[stat]}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        {mapThis.map(stat => <tr>
+                            <td>{stat}</td>
+                        <td>{this.props.currentRoll.originalRolls[stat]}</td>
+                            <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
+                            <td>{this.props.currentRoll.stats[stat]}</td>
+                            <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
                         </tr>
                         )}
-                        <tr>
+
+                        
+                        {/* <tr>
                             <td>{Object.keys(this.props.currentRoll.stats)[0]}</td>
                             <td>{Object.values(this.props.currentRoll.originalRolls)[0]}</td>
                             <td>{this.calculateDifference(this.props.currentRoll.originalRolls.strength, this.props.currentRoll.stats.strength)}</td>
@@ -120,7 +124,7 @@ export default class RollDisplay extends Component {
                             <td></td>
                             <td>{this.props.currentRoll.stats.charisma}</td>
                             <td></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
                 <label htmlFor='bio'>Bio:</label>

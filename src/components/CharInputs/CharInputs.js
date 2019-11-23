@@ -199,7 +199,7 @@ export default class CharInputs extends Component {
         let classToMap = Object.keys(nameStore.classTypes)
         let races = Object.keys(nameStore.races)
         console.log('classes to map are', classToMap)
-        console.log('nameStore test', nameStore.races)
+        console.log('races to map are', races)
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
                 <div className='name-gender-box'>
@@ -218,7 +218,7 @@ export default class CharInputs extends Component {
                 <select className='race-input' name='race'>
                     <option value=''>--</option>
                     
-                    {races.map(race => <option value={races[race]}>{races[race]}</option>)}
+                    {races.map(race => <option value={race}>{race}</option>)}
                     {/* <option value='Dragonborn'>Dragonborn</option>
                     <option value='Dwarf'>Dwarf</option>
                     <option value='Elf'>Elf</option>
@@ -236,7 +236,7 @@ export default class CharInputs extends Component {
                     {/* {Object.keys(nameStore.classTypes).map(function(key) {
                         return <option value={nameStore.classTypes[key]}>{Object.keys(nameStore.classTypes[key])}</option>
                     })} */}
-                    {classToMap.map(classType => <option value={classToMap[classType]}>{classToMap[classType]}</option>)}
+                    {classToMap.map(classType => <option value={classType}>{classType}</option>)}
                     {/* <option value='Barbarian'>Barbarian</option>
                     <option value='Bard'>Bard</option>
                     <option value='Cleric'>Cleric</option>
