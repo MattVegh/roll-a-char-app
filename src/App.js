@@ -5,6 +5,7 @@ import CharInputs from './components/CharInputs/CharInputs'
 import CharList from './components/CharList/CharList'
 import Nav from './components/Nav/Nav'
 import RollDisplay from './components/RollDisplay/RollDisplay'
+import InfoPage from './components/InfoPage/InfoPage'
 
 
 
@@ -73,7 +74,8 @@ class App extends Component {
         <main role='main'>
           <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
           <Route exact path='/' render={props => <RollDisplay currentRoll={this.state.currentRoll} {...props} />} />
-          <Route exact path='/characters' component={CharList} />
+          <Route path='/characters' component={CharList} />
+          <Route path='/info' component={InfoPage} />
         </main>
       </div>
     )

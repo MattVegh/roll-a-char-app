@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './RollDisplay.css'
-import nameStore from '../../name-store'
 
 export default class RollDisplay extends Component {
 
@@ -54,15 +53,15 @@ export default class RollDisplay extends Component {
 
     render() {
 
-        console.log('trying to map', Object.keys(this.props.currentRoll.stats))
-        console.log('namestore stat names', nameStore.statNames)
-        let mapThis = Object.keys(this.props.currentRoll.stats)
-        console.log('from RollDisplay', this.props.currentRoll)
+        // console.log('trying to map', Object.keys(this.props.currentRoll.stats))
+        // console.log('namestore stat names', nameStore.statNames)
+        let keysToMap = Object.keys(this.props.currentRoll.stats)
+        //console.log('from RollDisplay', this.props.currentRoll)
 
         return (
             <section className='roll-display hidden'>
                 <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
-                <p className='stat-value-label'>Stat values:</p><p className='stat-values'>{Object.keys(this.props.currentRoll.originalRolls).map(stat => this.props.currentRoll.originalRolls[stat]).join(' ')}</p>
+                {/* <p className='stat-value-label'>Stat values:</p><p className='stat-values'>{Object.keys(this.props.currentRoll.originalRolls).map(stat => this.props.currentRoll.originalRolls[stat]).join(' ')}</p> */}
 
                 <table>
                     <tbody>
@@ -73,7 +72,7 @@ export default class RollDisplay extends Component {
                             <th>Total</th>
                             <th>Mod</th>
                         </tr>
-                        {mapThis.map(stat => <tr>
+                        {keysToMap.map(stat => <tr>
                             <td>{stat}</td>
                         <td>{this.props.currentRoll.originalRolls[stat]}</td>
                             <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
@@ -82,7 +81,7 @@ export default class RollDisplay extends Component {
                         </tr>
                         )}
 
-                        
+
                         {/* <tr>
                             <td>{Object.keys(this.props.currentRoll.stats)[0]}</td>
                             <td>{Object.values(this.props.currentRoll.originalRolls)[0]}</td>

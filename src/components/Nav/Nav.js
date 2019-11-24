@@ -11,6 +11,7 @@ export default function Nav() {
                 <ul>
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/characters'>Characters</Link></li>
+                    <li><Link to='/info'>FAQ</Link></li>
 
                 </ul>
             </nav>

@@ -8,7 +8,12 @@
 .hidden {
   visibility: hidden;
 }
-  .bio-input {
-    width: 300px;
-    height: 60px;
+
+.bio-input {
+  width: 300px;
+  height: 60px;
   }
+
+.char-title {
+  text-align: center;
+}
