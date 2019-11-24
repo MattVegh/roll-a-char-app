@@ -1,0 +1,9 @@
+.info-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-list {
+    width: 80%;
+}
