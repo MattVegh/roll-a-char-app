@@ -198,8 +198,8 @@ export default class CharInputs extends Component {
     render() {
         let classToMap = Object.keys(nameStore.classTypes)
         let races = Object.keys(nameStore.races)
-        console.log('classes to map are', classToMap)
-        console.log('races to map are', races)
+        //console.log('classes to map are', classToMap)
+        //console.log('races to map are', races)
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
                 <div className='name-gender-box'>

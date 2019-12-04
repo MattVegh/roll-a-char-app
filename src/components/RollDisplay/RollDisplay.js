@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './RollDisplay.css'
 
 export default class RollDisplay extends Component {
+    state = {
+        bio: ''
+    }
 
     calculateModifier = (statScore) => {
         //console.log('calc mod', this.props.currentRoll.stats)
@@ -51,12 +54,23 @@ export default class RollDisplay extends Component {
 
     }
 
+    handleChange = (event) => {
+        this.setState({
+            bio: event.target.value
+        })
+        console.log(this.state)
+    }
+    handleCharacterSave = () => {
+        this.props.updateCurrentRollBio(this.state.bio)
+    }
+
     render() {
 
         // console.log('trying to map', Object.keys(this.props.currentRoll.stats))
         // console.log('namestore stat names', nameStore.statNames)
         let keysToMap = Object.keys(this.props.currentRoll.stats)
         //console.log('from RollDisplay', this.props.currentRoll)
+        //console.log('keystoMap', keysToMap)
 
         return (
             <section className='roll-display hidden'>
@@ -127,8 +141,8 @@ export default class RollDisplay extends Component {
                     </tbody>
                 </table>
                 <label htmlFor='bio'>Bio:</label>
-                <input type='text' name='bio' className='bio-input'></input>
-                <button>Save Character</button>
+                <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
+                <button onClick={this.handleCharacterSave}>Save Character</button>
             </section>
         )
     }

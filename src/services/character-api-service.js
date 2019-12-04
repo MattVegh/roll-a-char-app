@@ -1,18 +1,18 @@
-import config from '../config'
+// import config from '../config'
 
-const CharacterApiService = {
-    getCharacters() {
-        return fetch(`${config.API_ENDPOINT}/characters`)
-        .then(res => {
-            (!res.ok)
-            ? res.json().then(e => Promise.reject(e))
-            : res.json()
-        })
-    },
+// const CharacterApiService = {
+//     getCharacters() {
+//         return fetch(`${config.API_ENDPOINT}/characters`)
+//         .then(res => {
+//             (!res.ok)
+//             ? res.json().then(e => Promise.reject(e))
+//             : res.json()
+//         })
+//     },
 
-    postCharacter() {
+//     postCharacter() {
         
-    }
-}
+//     }
+// }
 
-export default CharacterApiService
+// export default CharacterApiService

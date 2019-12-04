@@ -19,7 +19,7 @@ class App extends Component {
       classType: '',
       stats: {
         strength: '',
-        dexterity: '', 
+        dexterity: '',
         constitution: '',
         intelligence: '',
         wisdom: '',
@@ -27,13 +27,13 @@ class App extends Component {
       },
       originalRolls: {
         strength: '',
-        dexterity: '', 
+        dexterity: '',
         constitution: '',
         intelligence: '',
         wisdom: '',
         charisma: ''
       },
-     
+      bio: ''
     }
   }
 
@@ -46,7 +46,7 @@ class App extends Component {
         classType: charDetails.classType,
         stats: {
           strength: charDetails.stats.strength,
-          dexterity: charDetails.stats.dexterity, 
+          dexterity: charDetails.stats.dexterity,
           constitution: charDetails.stats.constitution,
           intelligence: charDetails.stats.intelligence,
           wisdom: charDetails.stats.wisdom,
@@ -54,7 +54,7 @@ class App extends Component {
         },
         originalRolls: {
           strength: charDetails.originalRolls.strength,
-          dexterity: charDetails.originalRolls.dexterity, 
+          dexterity: charDetails.originalRolls.dexterity,
           constitution: charDetails.originalRolls.constitution,
           intelligence: charDetails.originalRolls.intelligence,
           wisdom: charDetails.originalRolls.wisdom,
@@ -62,7 +62,27 @@ class App extends Component {
         },
       }
     })
-    
+  }
+
+  updateCurrentRollBio = (bio) => {
+    this.setState({
+      currentRoll: {
+        bio: bio
+      }
+    })
+    console.log('bio is', bio)
+  }
+
+  postCharacter = () => {
+    fetch(`https://roll-a-char-api.herokuapp.com/characters`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+
+      })
+    })
   }
 
 
@@ -73,7 +93,7 @@ class App extends Component {
         <Nav />
         <main role='main'>
           <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
-          <Route exact path='/' render={props => <RollDisplay currentRoll={this.state.currentRoll} {...props} />} />
+          <Route exact path='/' render={props => <RollDisplay currentRoll={this.state.currentRoll} updateCurrentRollBio={this.updateCurrentRollBio} {...props} />} />
           <Route path='/characters' component={CharList} />
           <Route path='/info' component={InfoPage} />
         </main>
