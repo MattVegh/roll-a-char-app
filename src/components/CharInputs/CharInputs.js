@@ -152,7 +152,7 @@ export default class CharInputs extends Component {
     addRaceBonus = (charDetails) => {
         //console.log('from addRaceBonus', charDetails)
 
-        let statBonuses = nameStore.races[charDetails.race].statBonus
+        //let statBonuses = nameStore.races[charDetails.race].statBonus
         //console.log('stat bonuses are', statBonuses)
 
         let statBonusName = Object.keys(nameStore.races[charDetails.race].statBonus)

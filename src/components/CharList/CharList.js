@@ -1,9 +1,24 @@
 import React, { Component } from 'react'
 import './CharList.css'
+import CharacterApiService from '../../services/character-api-service'
+import config from '../../config'
 
 export default class CharList extends Component {
+    state = {
+        characters: []
+    }
+
+    componentDidMount() {
+        fetch(`https://roll-a-char-api.herokuapp.com/characters`)
+        .then(response => response.json())
+        .then((responseJson) => {
+            this.setState({characters: responseJson});
+            console.log('state is', this.state);
+        })
+    }
 
     render() {
+        
         return (
             <main role='main'>
                 <section className='char-display'>

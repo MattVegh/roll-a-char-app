@@ -25,10 +25,10 @@ export default function InfoPage() {
                     <p className='answer'>The modifier is what you add to your rolls during gameplay when rolling for that stat. If during play you need to roll a strength check and you have a modifier of +1, if you roll a 12 it will count as a 13.</p>
                     <p className='answer'>The value of the modifier is based on the total for the stat. A quick way to get it would be to take the stat, subtract 10 and divide by 2, rounding down.</p>
                 </div>
-                <div className='question-container'>
+                {/* <div className='question-container'>
                     <h4 className='question'></h4>
                     <p className='answer'></p>
-                </div>
+                </div> */}
             </section>
         </div>
     )

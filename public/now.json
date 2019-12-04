@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "alias": "mdv240-roll-a-char-app",
+    "name": "roll-a-char-app",
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/.*", "dest": "/index.html" }
+    ]
+  }
