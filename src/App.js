@@ -80,7 +80,26 @@ class App extends Component {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
+        fullname: this.state.currentRoll.name,
+        gender: this.state.currentRoll.gender,
+        race: this.state.currentRoll.race,
+        class_type: this.state.currentRoll.classType,
 
+        strength_original: this.state.currentRoll.originalRolls.strength,
+        dexterity_original: this.state.currentRoll.originalRolls.dexterity,
+        constitution_original: this.state.currentRoll.originalRolls.constitution,
+        intelligence_original: this.state.currentRoll.originalRolls.intelligence,
+        wisdom_original: this.state.currentRoll.originalRolls.wisdom,
+        charisma_original: this.state.currentRoll.originalRolls.charisma,
+
+        strength_total: this.state.currentRoll.stats.strength,
+        dexterity_total: this.state.currentRoll.stats.dexterity,
+        constitution_total: this.state.currentRoll.stats.constitution,
+        intelligence_total: this.state.currentRoll.stats.intelligence,
+        wisdom_total: this.state.currentRoll.stats.widsom,
+        charisma_total: this.state.currentRoll.stats.charisma,
+
+        bio: this.state.currentRoll.bio
       })
     })
   }

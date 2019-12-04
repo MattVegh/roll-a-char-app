@@ -2,17 +2,13 @@ import React, { Component } from 'react'
 import './RollDisplay.css'
 
 export default class RollDisplay extends Component {
-    state = {
-        bio: ''
-    }
-
+    
     calculateModifier = (statScore) => {
-        //console.log('calc mod', this.props.currentRoll.stats)
+
 
         if (statScore > 3 && statScore < 6) {
             //console.log('calc mod -3 for', statScore)
             return '-3'
-
 
         } else if (statScore > 5 && statScore < 8) {
             //console.log('calc mod -2 for', statScore)
@@ -42,35 +38,39 @@ export default class RollDisplay extends Component {
             //console.log('calc mod +4 for', statScore)
             return '+4'
 
+        } else if (statScore > 19 && statScore < 22) {
+            return '+5'
+
+        } else if (statScore > 21 && statScore < 24) {
+            return '+6'
         }
 
     }
 
     calculateDifference = (beforeBonus, afterBonus) => {
-        if( Math.abs(beforeBonus - afterBonus) == 0 ) {
+        if (Math.abs(beforeBonus - afterBonus) == 0) {
             return null
-        } else
-        return Math.abs(beforeBonus - afterBonus)
-
+        } else {
+            let difference = Math.abs(beforeBonus - afterBonus)
+            return difference
+        }
     }
 
     handleChange = (event) => {
         this.setState({
             bio: event.target.value
         })
-        console.log(this.state)
+        console.log('state is', this.state,
+            'props are', this.props.currentRoll)
     }
     handleCharacterSave = () => {
         this.props.updateCurrentRollBio(this.state.bio)
     }
 
     render() {
-
-        // console.log('trying to map', Object.keys(this.props.currentRoll.stats))
-        // console.log('namestore stat names', nameStore.statNames)
-        let keysToMap = Object.keys(this.props.currentRoll.stats)
-        //console.log('from RollDisplay', this.props.currentRoll)
-        //console.log('keystoMap', keysToMap)
+        console.log('current props are', this.props.currentRoll)
+        let statsToMap = Object.keys(this.props.currentRoll.stats)
+        console.log('STM', statsToMap)
 
         return (
             <section className='roll-display hidden'>
@@ -86,9 +86,9 @@ export default class RollDisplay extends Component {
                             <th>Total</th>
                             <th>Mod</th>
                         </tr>
-                        {keysToMap.map(stat => <tr>
+                        {statsToMap.map(stat => <tr>
                             <td>{stat}</td>
-                        <td>{this.props.currentRoll.originalRolls[stat]}</td>
+                            <td>{this.props.currentRoll.originalRolls[stat]}</td>
                             <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
                             <td>{this.props.currentRoll.stats[stat]}</td>
                             <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
@@ -142,7 +142,7 @@ export default class RollDisplay extends Component {
                 </table>
                 <label htmlFor='bio'>Bio:</label>
                 <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
-                <button onClick={this.handleCharacterSave}>Save Character</button>
+                <button onClick={(event) => this.handleCharacterSave(event)}>Save Character</button>
             </section>
         )
     }
