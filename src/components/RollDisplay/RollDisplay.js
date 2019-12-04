@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import './RollDisplay.css'
 
 export default class RollDisplay extends Component {
-    
+    state = {
+        bio: ''
+    }
+
     calculateModifier = (statScore) => {
 
 
