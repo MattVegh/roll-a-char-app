@@ -4,26 +4,7 @@ import './RollDisplay.css'
 export default class RollDisplay extends Component {
     state = {
         currentRoll: {
-          name: '',
-          gender: '',
-          race: '',
-          classType: '',
-          stats: {
-            strength: '',
-            dexterity: '',
-            constitution: '',
-            intelligence: '',
-            wisdom: '',
-            charisma: '',
-          },
-          originalRolls: {
-            strength: '',
-            dexterity: '',
-            constitution: '',
-            intelligence: '',
-            wisdom: '',
-            charisma: ''
-          },
+         
           bio: ''
         }
       }
@@ -132,7 +113,7 @@ export default class RollDisplay extends Component {
                 </table>
                 <label htmlFor='bio'>Bio:</label>
                 <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
-                <button onClick={() => this.handleCharacterSave()}>Save Character</button>
+                <button onClick={(event) => this.handleCharacterSave(event)}>Save Character</button>
             </section>
         )
     }
