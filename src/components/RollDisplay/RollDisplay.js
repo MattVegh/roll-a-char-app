@@ -82,9 +82,10 @@ export default class RollDisplay extends Component {
     }
 
 
-    // handleCharacterSave = () => {
-    //     this.props.postCharacter()
-    // }
+    handleCharacterSave = () => {
+        this.props.postCharacter()
+        
+    }
 
     render() {
 
@@ -121,7 +122,7 @@ export default class RollDisplay extends Component {
                 </table>
                 <label htmlFor='bio'>Bio:</label>
                 <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
-                {/* <button onClick={() => this.handleCharacterSave()}>Save Character</button> */}
+                <button onClick={() => this.handleCharacterSave()}>Save Character</button>
             </section>
         )
     }

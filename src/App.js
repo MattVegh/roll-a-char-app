@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import CharInputs from './components/CharInputs/CharInputs'
 import CharList from './components/CharList/CharList'
 import Nav from './components/Nav/Nav'
@@ -78,6 +78,8 @@ class App extends Component {
   }
 
   postCharacter = () => {
+    console.log('post')
+    console.log('state in postcharacter', this.state.currentRoll)
     fetch(`https://roll-a-char-api.herokuapp.com/characters`, {
       method: 'POST',
       headers: {
@@ -100,12 +102,18 @@ class App extends Component {
         dexterity_total: this.state.currentRoll.stats.dexterity,
         constitution_total: this.state.currentRoll.stats.constitution,
         intelligence_total: this.state.currentRoll.stats.intelligence,
-        wisdom_total: this.state.currentRoll.stats.widsom,
+        wisdom_total: this.state.currentRoll.stats.wisdom,
         charisma_total: this.state.currentRoll.stats.charisma,
 
         bio: this.state.currentRoll.bio
       })
     })
+    .then(res => 
+      (!res.ok) 
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+        )
+        this.props.history.push('/characters')
   }
 
 
@@ -126,7 +134,7 @@ class App extends Component {
           <Route path='/characters' component={CharList} />
 
           <Route path='/info' component={InfoPage} />
-          <button onClick={(event) => this.postCharacter(event)}>Save Character</button>
+          {/* <button onClick={() => this.postCharacter()}>Save Character</button> */}
         </main>
       </div>
     )
@@ -134,4 +142,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
