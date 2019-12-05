@@ -65,18 +65,26 @@ export default class RollDisplay extends Component {
 
 
 
+    // handleChange = (event) => {
+    //     this.setState({
+    //         currentRoll: {
+    //             bio: event.target.value
+    //         }
+    //     })
+    //     console.log('handleChange', 'state is', this.state,
+    //         'props are', this.props.currentRoll)
+    // }
+
     handleChange = (event) => {
-        this.setState({
-            currentRoll: {
-                bio: event.target.value
-            }
-        })
+        this.props.updateCurrentRollBio(event.target.value)
         console.log('handleChange', 'state is', this.state,
             'props are', this.props.currentRoll)
     }
-    handleCharacterSave = () => {
-        this.props.updateCurrentRollBio(this.state.bio)
-    }
+
+
+    // handleCharacterSave = () => {
+    //     this.props.postCharacter()
+    // }
 
     render() {
 
@@ -113,7 +121,7 @@ export default class RollDisplay extends Component {
                 </table>
                 <label htmlFor='bio'>Bio:</label>
                 <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
-                <button onClick={(event) => this.handleCharacterSave(event)}>Save Character</button>
+                {/* <button onClick={() => this.handleCharacterSave()}>Save Character</button> */}
             </section>
         )
     }

@@ -40,7 +40,7 @@ class App extends Component {
   updateCurrentRoll = (charDetails) => {
     console.log('from updateCurrentRoll in App before state update', this.state)
     this.setState({
-      
+
       currentRoll: {
         name: charDetails.name,
         gender: charDetails.gender,
@@ -69,11 +69,12 @@ class App extends Component {
   }
 
   updateCurrentRollBio = (bio) => {
-    
+
     this.setState({
-      currentRoll: {...this.state.currentRoll, bio: bio}
+      currentRoll: { ...this.state.currentRoll, bio: bio }
     })
     console.log('bio is', bio)
+
   }
 
   postCharacter = () => {
@@ -115,9 +116,17 @@ class App extends Component {
         <Nav />
         <main role='main'>
           <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
-          <Route exact path='/' render={props => <RollDisplay currentRoll={this.state.currentRoll} updateCurrentRollBio={this.updateCurrentRollBio} {...props} />} />
+
+          <Route exact path='/' render={props => <RollDisplay
+            currentRoll={this.state.currentRoll}
+            updateCurrentRollBio={this.updateCurrentRollBio}
+            postCharacter={this.postCharacter}
+            {...props} />} />
+
           <Route path='/characters' component={CharList} />
+
           <Route path='/info' component={InfoPage} />
+          <button onClick={(event) => this.postCharacter(event)}>Save Character</button>
         </main>
       </div>
     )
