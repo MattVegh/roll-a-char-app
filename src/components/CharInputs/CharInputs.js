@@ -219,36 +219,13 @@ export default class CharInputs extends Component {
                     <option value=''>--</option>
                     
                     {races.map(race => <option value={race}>{race}</option>)}
-                    {/* <option value='Dragonborn'>Dragonborn</option>
-                    <option value='Dwarf'>Dwarf</option>
-                    <option value='Elf'>Elf</option>
-                    <option value='Gnome'>Gnome</option>
-                    <option value='Half-Elf'>Half-Elf</option>
-                    <option value='Halfling'>Halfling</option>
-                    <option value='Half-Orc'>Half-Orc</option>
-                    <option value='Human'>Human</option>
-                    <option value='Tiefling'>Tiefling</option> */}
                 </select>
 
                 <label htmlFor='class-type'>Class:</label>
                 <select className='class-input' name='classType'>
                     <option value=''>--</option>
-                    {/* {Object.keys(nameStore.classTypes).map(function(key) {
-                        return <option value={nameStore.classTypes[key]}>{Object.keys(nameStore.classTypes[key])}</option>
-                    })} */}
                     {classToMap.map(classType => <option value={classType}>{classType}</option>)}
-                    {/* <option value='Barbarian'>Barbarian</option>
-                    <option value='Bard'>Bard</option>
-                    <option value='Cleric'>Cleric</option>
-                    <option value='Druid'>Druid</option>
-                    <option value='Fighter'>Fighter</option>
-                    <option value='Monk'>Monk</option>
-                    <option value='Paladin'>Paladin</option>
-                    <option value='Ranger'>Ranger</option>
-                    <option value='Rogue'>Rogue</option>
-                    <option value='Sorcerer'>Sorcerer</option>
-                    <option value='Warlock'>Warlock</option>
-                    <option value='Wizard'>Wizard</option> */}
+                    
                 </select>
 
                 <button >ROLL!</button>

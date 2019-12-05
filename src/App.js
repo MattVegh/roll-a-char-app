@@ -38,7 +38,9 @@ class App extends Component {
   }
 
   updateCurrentRoll = (charDetails) => {
+    console.log('from updateCurrentRoll in App before state update', this.state)
     this.setState({
+      
       currentRoll: {
         name: charDetails.name,
         gender: charDetails.gender,
@@ -60,15 +62,16 @@ class App extends Component {
           wisdom: charDetails.originalRolls.wisdom,
           charisma: charDetails.originalRolls.charisma
         },
+        bio: ''
       }
     })
+    console.log('from updateCurrentRoll in App after state update', this.state)
   }
 
   updateCurrentRollBio = (bio) => {
+    
     this.setState({
-      currentRoll: {
-        bio: bio
-      }
+      currentRoll: {...this.state.currentRoll, bio: bio}
     })
     console.log('bio is', bio)
   }

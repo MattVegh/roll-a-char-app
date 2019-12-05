@@ -3,8 +3,31 @@ import './RollDisplay.css'
 
 export default class RollDisplay extends Component {
     state = {
-        bio: ''
-    }
+        currentRoll: {
+          name: '',
+          gender: '',
+          race: '',
+          classType: '',
+          stats: {
+            strength: '',
+            dexterity: '',
+            constitution: '',
+            intelligence: '',
+            wisdom: '',
+            charisma: '',
+          },
+          originalRolls: {
+            strength: '',
+            dexterity: '',
+            constitution: '',
+            intelligence: '',
+            wisdom: '',
+            charisma: ''
+          },
+          bio: ''
+        }
+      }
+
 
     calculateModifier = (statScore) => {
 
@@ -59,11 +82,15 @@ export default class RollDisplay extends Component {
         }
     }
 
+
+
     handleChange = (event) => {
         this.setState({
-            bio: event.target.value
+            currentRoll: {
+                bio: event.target.value
+            }
         })
-        console.log('state is', this.state,
+        console.log('handleChange', 'state is', this.state,
             'props are', this.props.currentRoll)
     }
     handleCharacterSave = () => {
@@ -71,7 +98,10 @@ export default class RollDisplay extends Component {
     }
 
     render() {
+
         console.log('current props are', this.props.currentRoll)
+        console.log('CR stats', this.props.currentRoll.stats)
+
         let statsToMap = Object.keys(this.props.currentRoll.stats)
         console.log('STM', statsToMap)
 
@@ -89,6 +119,7 @@ export default class RollDisplay extends Component {
                             <th>Total</th>
                             <th>Mod</th>
                         </tr>
+
                         {statsToMap.map(stat => <tr>
                             <td>{stat}</td>
                             <td>{this.props.currentRoll.originalRolls[stat]}</td>
@@ -97,55 +128,11 @@ export default class RollDisplay extends Component {
                             <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
                         </tr>
                         )}
-
-
-                        {/* <tr>
-                            <td>{Object.keys(this.props.currentRoll.stats)[0]}</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[0]}</td>
-                            <td>{this.calculateDifference(this.props.currentRoll.originalRolls.strength, this.props.currentRoll.stats.strength)}</td>
-                            <td>{this.props.currentRoll.stats.strength}</td>
-                            <td>{this.calculateModifier(this.props.currentRoll.stats.strength)}</td>
-                        </tr>
-                        <tr>
-                            <td>Dex</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[1]}</td>
-                            <td></td>
-                            <td>{this.props.currentRoll.stats.dexterity}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Con</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[2]}</td>
-                            <td></td>
-                            <td>{this.props.currentRoll.stats.constitution}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Int</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[3]}</td>
-                            <td></td>
-                            <td>{this.props.currentRoll.stats.intelligence}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Wis</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[4]}</td>
-                            <td></td>
-                            <td>{this.props.currentRoll.stats.wisdom}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Cha</td>
-                            <td>{Object.values(this.props.currentRoll.originalRolls)[5]}</td>
-                            <td></td>
-                            <td>{this.props.currentRoll.stats.charisma}</td>
-                            <td></td>
-                        </tr> */}
                     </tbody>
                 </table>
                 <label htmlFor='bio'>Bio:</label>
                 <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
-                <button onClick={(event) => this.handleCharacterSave(event)}>Save Character</button>
+                <button onClick={() => this.handleCharacterSave()}>Save Character</button>
             </section>
         )
     }
