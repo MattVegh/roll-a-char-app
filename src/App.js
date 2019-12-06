@@ -63,7 +63,8 @@ class App extends Component {
           charisma: charDetails.originalRolls.charisma
         },
         bio: ''
-      }
+      },
+      shouldDisplay: false
     })
     console.log('from updateCurrentRoll in App after state update', this.state)
   }
@@ -119,8 +120,11 @@ class App extends Component {
   }
 
   sendToCharactersPage() {
+    
+    this.setState({
+      shouldDisplay: true
+    })
     this.props.history.push('/characters')
-
   }
 
 
@@ -138,7 +142,7 @@ class App extends Component {
             postCharacter={this.postCharacter}
             {...props} />} />
 
-          <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll}/> }} />
+          <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll} shouldDisplay={this.state.shouldDisplay}/> }} />
 
           <Route path='/info' component={InfoPage} />
         </main>

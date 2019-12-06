@@ -64,10 +64,11 @@ export default class CharList extends Component {
         console.log('current characters are', characters)
         console.log('current roll props are', this.props.currentRoll)
         let statsToMap = Object.keys(this.props.currentRoll.stats)
+        console.log('getting display conditions', this.props.shouldDisplay, 'and', this.props.currentRoll, characters)
 
         return (
             <main role='main'>
-                {!this.props.currentRoll.name && this.props.currentRoll !== characters[characters.length - 1] ? <div></div> : <section className='char-display'>
+                {!this.props.shouldDisplay ? <div></div> : <section className='char-display'>
                     <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
 
                     <table>
