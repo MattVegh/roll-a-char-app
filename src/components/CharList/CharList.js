@@ -14,6 +14,7 @@ export default class CharList extends Component {
             })
     }
 
+    
     calculateDifference = (beforeBonus, afterBonus) => {
         if( Math.abs(beforeBonus - afterBonus) == 0 ) {
             return null

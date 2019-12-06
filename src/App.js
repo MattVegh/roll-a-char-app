@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, withRouter } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 import CharInputs from './components/CharInputs/CharInputs'
 import CharList from './components/CharList/CharList'
 import Nav from './components/Nav/Nav'
@@ -113,7 +113,15 @@ class App extends Component {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
         )
-        this.props.history.push('/characters')
+        
+        this.sendToCharactersPage()
+  
+  }
+
+  sendToCharactersPage() {
+    this.props.history.push('/characters')
+    
+
   }
 
 
@@ -134,7 +142,6 @@ class App extends Component {
           <Route path='/characters' component={CharList} />
 
           <Route path='/info' component={InfoPage} />
-          {/* <button onClick={() => this.postCharacter()}>Save Character</button> */}
         </main>
       </div>
     )
