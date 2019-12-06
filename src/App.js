@@ -120,7 +120,6 @@ class App extends Component {
 
   sendToCharactersPage() {
     this.props.history.push('/characters')
-    
 
   }
 
@@ -139,7 +138,7 @@ class App extends Component {
             postCharacter={this.postCharacter}
             {...props} />} />
 
-          <Route path='/characters' component={CharList} />
+          <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll}/> }} />
 
           <Route path='/info' component={InfoPage} />
         </main>

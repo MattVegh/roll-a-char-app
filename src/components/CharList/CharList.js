@@ -14,13 +14,13 @@ export default class CharList extends Component {
             })
     }
 
-    
+
     calculateDifference = (beforeBonus, afterBonus) => {
-        if( Math.abs(beforeBonus - afterBonus) == 0 ) {
+        if (Math.abs(beforeBonus - afterBonus) == 0) {
             return null
         } else {
-        let difference = Math.abs(beforeBonus - afterBonus)
-        return difference
+            let difference = Math.abs(beforeBonus - afterBonus)
+            return difference
         }
     }
 
@@ -62,8 +62,38 @@ export default class CharList extends Component {
     render() {
         let characters = this.state.characters
         console.log('current characters are', characters)
+        console.log('current roll props are', this.props.currentRoll)
+        let statsToMap = Object.keys(this.props.currentRoll.stats)
+
         return (
             <main role='main'>
+                {!this.props.currentRoll.name && this.props.currentRoll !== characters[characters.length - 1] ? <div></div> : <section className='char-display'>
+                    <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Stat</th>
+                                <th>Value</th>
+                                <th>Bonus</th>
+                                <th>Total</th>
+                                <th>Mod</th>
+                            </tr>
+
+                            {statsToMap.map(stat => <tr>
+                                <td>{stat}</td>
+                                <td>{this.props.currentRoll.originalRolls[stat]}</td>
+                                <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
+                                <td>{this.props.currentRoll.stats[stat]}</td>
+                                <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    <p>{this.props.currentRoll.bio}</p>
+                </section>}
+
+
                 {!characters ? <div></div> : characters.slice(0).reverse().map(detail =>
                     <section className='char-display'>
                         <h3 className='char-title'>{detail.fullname} the {detail.gender} {detail.race} {detail.class_type}</h3>
