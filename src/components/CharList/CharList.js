@@ -5,22 +5,31 @@ import CharacterContext from '../../CharacterContext';
 export default class CharList extends Component {
     static contextType = CharacterContext;
     state = {
-        characters: []
+        characters: [],
     }
 
     componentDidMount() {
+        this.fetchCharacters()
+    }
+
+    componentDidUpdate() {
+
+        if (this.props.shouldDisplay === true) {
+            this.fetchCharacters()
+            this.props.handleUpdate()
+        }
+    }
+
+
+
+
+    fetchCharacters() {
         fetch(`https://roll-a-char-api.herokuapp.com/characters`)
             .then(response => response.json())
             .then((responseJson) => {
                 this.setState({ characters: responseJson })
             })
-        // this.setState({
-        //     characters: this.context.characters
-        // })
-        // console.log('mounted char list', this.state.characters)
-        // console.log('charactercontext', this.context.characters)
     }
-
 
     calculateDifference = (beforeBonus, afterBonus) => {
         if (Math.abs(beforeBonus - afterBonus) == 0) {
@@ -70,37 +79,9 @@ export default class CharList extends Component {
         let characters = this.state.characters
         console.log('current characters are', characters)
         console.log('current roll props are', this.props.currentRoll)
-        //let statsToMap = Object.keys(this.props.currentRoll.stats)
-        console.log('getting display conditions', this.props.shouldDisplay, 'and', this.props.currentRoll, characters)
 
         return (
             <main role='main'>
-                {/* {!this.props.shouldDisplay ? <div></div> : <section className='char-display'>
-                    <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
-
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Stat</th>
-                                <th>Value</th>
-                                <th>Bonus</th>
-                                <th>Total</th>
-                                <th>Mod</th>
-                            </tr>
-
-                            {statsToMap.map(stat => <tr>
-                                <td>{stat}</td>
-                                <td>{this.props.currentRoll.originalRolls[stat]}</td>
-                                <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
-                                <td>{this.props.currentRoll.stats[stat]}</td>
-                                <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
-                            </tr>
-                            )}
-                        </tbody>
-                    </table>
-                    <p>{this.props.currentRoll.bio}</p>
-                </section>} */}
-
 
                 {!characters ? <div></div> : characters.slice(0).reverse().map(detail =>
                     <section className='char-display'>
