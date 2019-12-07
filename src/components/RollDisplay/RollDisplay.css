@@ -1,8 +1,10 @@
 .roll-display {
-    background: lightgray;
+    /* background-image: url('../../images/parchmentbackgroundCropped.jpg');
+    background-size: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   
 .hidden {

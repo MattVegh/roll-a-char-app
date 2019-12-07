@@ -1,3 +1,8 @@
 * {
     box-sizing: border-box;
   }
+
+  body {
+    background-image: url('./images/parchmentbackgroundCropped.jpg');
+    background-size: 100%;
+  }

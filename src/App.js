@@ -6,6 +6,7 @@ import CharList from './components/CharList/CharList'
 import Nav from './components/Nav/Nav'
 import RollDisplay from './components/RollDisplay/RollDisplay'
 import InfoPage from './components/InfoPage/InfoPage'
+import CharacterContext from './CharacterContext';
 
 
 
@@ -37,10 +38,18 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch(`https://roll-a-char-api.herokuapp.com/characters`)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({ characters: responseJson })
+      })
+  }
+
   updateCurrentRoll = (charDetails) => {
     console.log('from updateCurrentRoll in App before state update', this.state)
     this.setState({
-
+      ...this.state.characters, 
       currentRoll: {
         name: charDetails.name,
         gender: charDetails.gender,
@@ -64,7 +73,8 @@ class App extends Component {
         },
         bio: ''
       },
-      shouldDisplay: false
+      shouldDisplay: false,
+      
     })
     console.log('from updateCurrentRoll in App after state update', this.state)
   }
@@ -109,27 +119,44 @@ class App extends Component {
         bio: this.state.currentRoll.bio
       })
     })
-    .then(res => 
-      (!res.ok) 
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-        )
-        
-        this.sendToCharactersPage()
-  
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+
+    this.sendToCharactersPage()
+
   }
 
+  // fetchMethod() {
+  //   fetch(`https://roll-a-char-api.herokuapp.com/characters`)
+  //     .then(response => response.json())
+  //     .then((responseJson) => {
+  //       this.setState({ characters: responseJson })
+  //     })
+  // }
+
   sendToCharactersPage() {
-    
-    this.setState({
-      shouldDisplay: true
-    })
+
+    // this.setState({
+    //   shouldDisplay: true
+    // })
+    fetch(`https://roll-a-char-api.herokuapp.com/characters`)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({ characters: responseJson })
+      })
     this.props.history.push('/characters')
   }
 
 
   render() {
     console.log('currentRoll in App.js is', this.state.currentRoll)
+    const contextValue = {
+      characters: this.state.characters
+    }
+    console.log('context is', contextValue)
     return (
       <div className='App'>
         <Nav />
@@ -141,9 +168,9 @@ class App extends Component {
             updateCurrentRollBio={this.updateCurrentRollBio}
             postCharacter={this.postCharacter}
             {...props} />} />
-
-          <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll} shouldDisplay={this.state.shouldDisplay}/> }} />
-
+          {/* <CharacterContext.Provider value={contextValue}> */}
+            <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll} shouldDisplay={this.state.shouldDisplay} /> }} />
+          {/* </CharacterContext.Provider> */}
           <Route path='/info' component={InfoPage} />
         </main>
       </div>

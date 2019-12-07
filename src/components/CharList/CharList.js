@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './CharList.css'
+import CharacterContext from '../../CharacterContext';
 
 export default class CharList extends Component {
+    static contextType = CharacterContext;
     state = {
         characters: []
     }
@@ -12,6 +14,11 @@ export default class CharList extends Component {
             .then((responseJson) => {
                 this.setState({ characters: responseJson })
             })
+        // this.setState({
+        //     characters: this.context.characters
+        // })
+        // console.log('mounted char list', this.state.characters)
+        // console.log('charactercontext', this.context.characters)
     }
 
 
@@ -63,12 +70,12 @@ export default class CharList extends Component {
         let characters = this.state.characters
         console.log('current characters are', characters)
         console.log('current roll props are', this.props.currentRoll)
-        let statsToMap = Object.keys(this.props.currentRoll.stats)
+        //let statsToMap = Object.keys(this.props.currentRoll.stats)
         console.log('getting display conditions', this.props.shouldDisplay, 'and', this.props.currentRoll, characters)
 
         return (
             <main role='main'>
-                {!this.props.shouldDisplay ? <div></div> : <section className='char-display'>
+                {/* {!this.props.shouldDisplay ? <div></div> : <section className='char-display'>
                     <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
 
                     <table>
@@ -92,7 +99,7 @@ export default class CharList extends Component {
                         </tbody>
                     </table>
                     <p>{this.props.currentRoll.bio}</p>
-                </section>}
+                </section>} */}
 
 
                 {!characters ? <div></div> : characters.slice(0).reverse().map(detail =>
@@ -155,6 +162,7 @@ export default class CharList extends Component {
                     </section>
                 )}
             </main>
+
         )
     }
 }
