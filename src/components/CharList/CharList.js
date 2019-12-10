@@ -148,7 +148,9 @@ export default class CharList extends Component {
                             </tbody>
                         </table>
                         <p>{detail.bio}</p>
+                        <img className='divider' src={require('../../images/divider-one.png')}></img>
                     </section>
+                    
                 )}
             </main>
 

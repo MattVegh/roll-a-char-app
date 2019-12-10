@@ -97,6 +97,7 @@ export default class RollDisplay extends Component {
 
         return (
             <section className='roll-display hidden'>
+                <img className='divider' src={require('../../images/divider-one.png')}></img>
                 <h3 className='char-title'>{this.props.currentRoll.name} the {this.props.currentRoll.gender} {this.props.currentRoll.race} {this.props.currentRoll.classType}</h3>
                 {/* <p className='stat-value-label'>Stat values:</p><p className='stat-values'>{Object.keys(this.props.currentRoll.originalRolls).map(stat => this.props.currentRoll.originalRolls[stat]).join(' ')}</p> */}
 

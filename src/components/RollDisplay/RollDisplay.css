@@ -1,12 +1,11 @@
 .roll-display {
-    /* background-image: url('../../images/parchmentbackgroundCropped.jpg');
-    background-size: 100%; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
   }
   
 .hidden {
@@ -28,4 +27,9 @@
 
 .value, .bonus, .total, .mod {
   text-align: center;
+}
+
+.divider {
+  margin-top: 30px;
+  width: 35%;
 }
