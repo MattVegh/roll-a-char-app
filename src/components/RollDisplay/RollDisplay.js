@@ -122,7 +122,7 @@ export default class RollDisplay extends Component {
                     </tbody>
                 </table>
                 <label htmlFor='bio'>Bio:</label>
-                <input type='text' name='bio' className='bio-input' onChange={this.handleChange}></input>
+                <textarea type='text' name='bio' className='bio-input' onChange={this.handleChange}></textarea>
                 <button onClick={() => this.handleCharacterSave()}>Save Character</button>
             </section>
         )
