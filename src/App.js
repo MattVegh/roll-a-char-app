@@ -38,13 +38,13 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch(`https://roll-a-char-api.herokuapp.com/characters`)
-      .then(response => response.json())
-      .then((responseJson) => {
-        this.setState({ characters: responseJson })
-      })
-  }
+  // componentDidMount() {
+  //   fetch(`https://roll-a-char-api.herokuapp.com/characters`)
+  //     .then(response => response.json())
+  //     .then((responseJson) => {
+  //       this.setState({ characters: responseJson })
+  //     })
+  // }
 
   // componentDidMount() {
   //   fetch(`http://localhost:8000/characters`)
