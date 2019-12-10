@@ -2,7 +2,9 @@
     box-sizing: border-box;
   }
 
-  body {
-    background-image: url('./images/parchmentbackgroundCropped.jpg');
-    background-size: 100%;
+body {
+  background-image: url('./images/vintagepaper.jpg');
+  font-family: 'Gupter', serif;
+  font-size: 20px;
   }
+

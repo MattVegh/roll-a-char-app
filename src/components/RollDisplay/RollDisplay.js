@@ -93,6 +93,10 @@ export default class RollDisplay extends Component {
         console.log('CR stats', this.props.currentRoll.stats)
 
         let statsToMap = Object.keys(this.props.currentRoll.stats)
+
+        // statsToMap = statsToMap.map(stat => {
+        //     return stat.charAt(0).toUpperCase() + stat.slice(1);
+        // })
         console.log('STM', statsToMap)
 
         return (

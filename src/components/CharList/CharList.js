@@ -97,45 +97,45 @@ export default class CharList extends Component {
                                 </tr>
                                 <tr>
                                     <td>Str</td>
-                                    <td>{detail.strength_original}</td>
-                                    <td>{this.calculateDifference(detail.strength_original, detail.strength_total)}</td>
-                                    <td>{detail.strength_total}</td>
-                                    <td>{this.calculateModifier(detail.strength_total)}</td>
+                                    <td>{detail.Strength_original}</td>
+                                    <td>{this.calculateDifference(detail.Strength_original, detail.Strength_total)}</td>
+                                    <td>{detail.Strength_total}</td>
+                                    <td>{this.calculateModifier(detail.Strength_total)}</td>
                                 </tr>
                                 <tr>
                                     <td>Dex</td>
-                                    <td>{detail.dexterity_original}</td>
-                                    <td>{this.calculateDifference(detail.dexterity_original, detail.dexterity_total)}</td>
-                                    <td>{detail.dexterity_total}</td>
-                                    <td>{this.calculateModifier(detail.dexterity_total)}</td>
+                                    <td>{detail.Dexterity_original}</td>
+                                    <td>{this.calculateDifference(detail.Dexterity_original, detail.Dexterity_total)}</td>
+                                    <td>{detail.Dexterity_total}</td>
+                                    <td>{this.calculateModifier(detail.Dexterity_total)}</td>
                                 </tr>
                                 <tr>
                                     <td>Con</td>
-                                    <td>{detail.constitution_original}</td>
-                                    <td>{this.calculateDifference(detail.constitution_original, detail.constitution_total)}</td>
-                                    <td>{detail.constitution_total}</td>
-                                    <td>{this.calculateModifier(detail.constitution_total)}</td>
+                                    <td>{detail.Constitution_original}</td>
+                                    <td>{this.calculateDifference(detail.Constitution_original, detail.Constitution_total)}</td>
+                                    <td>{detail.Constitution_total}</td>
+                                    <td>{this.calculateModifier(detail.Constitution_total)}</td>
                                 </tr>
                                 <tr>
                                     <td>Int</td>
-                                    <td>{detail.intelligence_original}</td>
-                                    <td>{this.calculateDifference(detail.intelligence_original, detail.intelligence_total)}</td>
-                                    <td>{detail.intelligence_total}</td>
-                                    <td>{this.calculateModifier(detail.intelligence_total)}</td>
+                                    <td>{detail.Intelligence_original}</td>
+                                    <td>{this.calculateDifference(detail.Intelligence_original, detail.Intelligence_total)}</td>
+                                    <td>{detail.Intelligence_total}</td>
+                                    <td>{this.calculateModifier(detail.Intelligence_total)}</td>
                                 </tr>
                                 <tr>
                                     <td>Wis</td>
-                                    <td>{detail.wisdom_original}</td>
-                                    <td>{this.calculateDifference(detail.wisdom_original, detail.wisdom_total)}</td>
-                                    <td>{detail.wisdom_total}</td>
-                                    <td>{this.calculateModifier(detail.wisdom_total)}</td>
+                                    <td>{detail.Wisdom_original}</td>
+                                    <td>{this.calculateDifference(detail.Wisdom_original, detail.Wisdom_total)}</td>
+                                    <td>{detail.Wisdom_total}</td>
+                                    <td>{this.calculateModifier(detail.Wisdom_total)}</td>
                                 </tr>
                                 <tr>
                                     <td>Cha</td>
-                                    <td>{detail.charisma_original}</td>
-                                    <td>{this.calculateDifference(detail.charisma_original, detail.charisma_total)}</td>
-                                    <td>{detail.charisma_total}</td>
-                                    <td>{this.calculateModifier(detail.charisma_total)}</td>
+                                    <td>{detail.Charisma_original}</td>
+                                    <td>{this.calculateDifference(detail.Charisma_original, detail.Charisma_total)}</td>
+                                    <td>{detail.Charisma_total}</td>
+                                    <td>{this.calculateModifier(detail.Charisma_total)}</td>
                                 </tr>
                             </tbody>
                         </table>

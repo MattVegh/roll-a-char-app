@@ -1,5 +1,4 @@
 .titles {
-    background: lightgray;
     text-align: center;
   }
   
@@ -9,11 +8,11 @@
   }
   
   nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: space-around;
-      width: 30%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
   }
   
   nav ul a {

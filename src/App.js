@@ -19,20 +19,20 @@ class App extends Component {
       race: '',
       classType: '',
       stats: {
-        strength: '',
-        dexterity: '',
-        constitution: '',
-        intelligence: '',
-        wisdom: '',
-        charisma: '',
+        Strength: '',
+        Dexterity: '',
+        Constitution: '',
+        Intelligence: '',
+        Wisdom: '',
+        Charisma: '',
       },
       originalRolls: {
-        strength: '',
-        dexterity: '',
-        constitution: '',
-        intelligence: '',
-        wisdom: '',
-        charisma: ''
+        Strength: '',
+        Dexterity: '',
+        Constitution: '',
+        Intelligence: '',
+        Wisdom: '',
+        Charisma: ''
       },
       bio: ''
     }
@@ -55,20 +55,20 @@ class App extends Component {
         race: charDetails.race,
         classType: charDetails.classType,
         stats: {
-          strength: charDetails.stats.strength,
-          dexterity: charDetails.stats.dexterity,
-          constitution: charDetails.stats.constitution,
-          intelligence: charDetails.stats.intelligence,
-          wisdom: charDetails.stats.wisdom,
-          charisma: charDetails.stats.charisma,
+          Strength: charDetails.stats.Strength,
+          Dexterity: charDetails.stats.Dexterity,
+          Constitution: charDetails.stats.Constitution,
+          Intelligence: charDetails.stats.Intelligence,
+          Wisdom: charDetails.stats.Wisdom,
+          Charisma: charDetails.stats.Charisma,
         },
         originalRolls: {
-          strength: charDetails.originalRolls.strength,
-          dexterity: charDetails.originalRolls.dexterity,
-          constitution: charDetails.originalRolls.constitution,
-          intelligence: charDetails.originalRolls.intelligence,
-          wisdom: charDetails.originalRolls.wisdom,
-          charisma: charDetails.originalRolls.charisma
+          Strength: charDetails.originalRolls.Strength,
+          Dexterity: charDetails.originalRolls.Dexterity,
+          Constitution: charDetails.originalRolls.Constitution,
+          Intelligence: charDetails.originalRolls.Intelligence,
+          Wisdom: charDetails.originalRolls.Wisdom,
+          Charisma: charDetails.originalRolls.Charisma
         },
         bio: ''
       },
@@ -101,19 +101,19 @@ class App extends Component {
         race: this.state.currentRoll.race,
         class_type: this.state.currentRoll.classType,
 
-        strength_original: this.state.currentRoll.originalRolls.strength,
-        dexterity_original: this.state.currentRoll.originalRolls.dexterity,
-        constitution_original: this.state.currentRoll.originalRolls.constitution,
-        intelligence_original: this.state.currentRoll.originalRolls.intelligence,
-        wisdom_original: this.state.currentRoll.originalRolls.wisdom,
-        charisma_original: this.state.currentRoll.originalRolls.charisma,
+        Strength_original: this.state.currentRoll.originalRolls.Strength,
+        Dexterity_original: this.state.currentRoll.originalRolls.Dexterity,
+        Constitution_original: this.state.currentRoll.originalRolls.Constitution,
+        Intelligence_original: this.state.currentRoll.originalRolls.Intelligence,
+        Wisdom_original: this.state.currentRoll.originalRolls.Wisdom,
+        Charisma_original: this.state.currentRoll.originalRolls.Charisma,
 
-        strength_total: this.state.currentRoll.stats.strength,
-        dexterity_total: this.state.currentRoll.stats.dexterity,
-        constitution_total: this.state.currentRoll.stats.constitution,
-        intelligence_total: this.state.currentRoll.stats.intelligence,
-        wisdom_total: this.state.currentRoll.stats.wisdom,
-        charisma_total: this.state.currentRoll.stats.charisma,
+        Strength_total: this.state.currentRoll.stats.Strength,
+        Dexterity_total: this.state.currentRoll.stats.Dexterity,
+        Constitution_total: this.state.currentRoll.stats.Constitution,
+        Intelligence_total: this.state.currentRoll.stats.Intelligence,
+        Wisdom_total: this.state.currentRoll.stats.Wisdom,
+        Charisma_total: this.state.currentRoll.stats.Charisma,
 
         bio: this.state.currentRoll.bio
       })
@@ -148,18 +148,20 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <Nav />
-        <main role='main'>
-          <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
+        <div className='app-container'>
+          <Nav />
+          <main role='main'>
+            <Route exact path='/' component={(props) => { return <CharInputs {...props} updateCurrentRoll={this.updateCurrentRoll} /> }} />
 
-          <Route exact path='/' render={props => <RollDisplay
-            currentRoll={this.state.currentRoll}
-            updateCurrentRollBio={this.updateCurrentRollBio}
-            postCharacter={this.postCharacter}
-            {...props} />} />
-          <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll} shouldDisplay={this.state.shouldDisplay} handleUpdate={this.handleUpdate} /> }} />
-          <Route path='/info' component={InfoPage} />
-        </main>
+            <Route exact path='/' render={props => <RollDisplay
+              currentRoll={this.state.currentRoll}
+              updateCurrentRollBio={this.updateCurrentRollBio}
+              postCharacter={this.postCharacter}
+              {...props} />} />
+            <Route path='/characters' component={(props) => { return <CharList {...props} currentRoll={this.state.currentRoll} shouldDisplay={this.state.shouldDisplay} handleUpdate={this.handleUpdate} /> }} />
+            <Route path='/info' component={InfoPage} />
+          </main>
+        </div>
       </div>
     )
 
