@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   
 .hidden {
@@ -17,5 +19,13 @@
   }
 
 .char-title {
+  text-align: center;
+}
+
+.stat {
+  padding-right: 5px;
+}
+
+.value, .bonus, .total, .mod {
   text-align: center;
 }

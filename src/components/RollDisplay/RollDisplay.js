@@ -111,11 +111,11 @@ export default class RollDisplay extends Component {
                         </tr>
 
                         {statsToMap.map(stat => <tr>
-                            <td>{stat.charAt(0).toUpperCase() + stat.slice(1)}</td>
-                            <td>{this.props.currentRoll.originalRolls[stat]}</td>
-                            <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
-                            <td>{this.props.currentRoll.stats[stat]}</td>
-                            <td>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
+                            <td className='stat'>{stat.charAt(0).toUpperCase() + stat.slice(1)}</td>
+                            <td className='value'>{this.props.currentRoll.originalRolls[stat]}</td>
+                            <td className='bonus'>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
+                            <td className='total'>{this.props.currentRoll.stats[stat]}</td>
+                            <td className='mod'>{this.calculateModifier(this.props.currentRoll.stats[stat])}</td>
                         </tr>
                         )}
                     </tbody>

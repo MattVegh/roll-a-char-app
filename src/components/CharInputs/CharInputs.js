@@ -203,12 +203,12 @@ export default class CharInputs extends Component {
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
                 <div className='name-gender-box'>
-                    <label htmlFor='name'>Name:</label>
+                    <label htmlFor='name' >Name:</label>
                     <input type='text' name='name' className='name-input'></input>
 
                     <label htmlFor='gender'>Gender:</label>
                     <select className='gender-input' name='gender'>
-                        <option value=''>--</option>
+                        <option value='' >--</option>
                         <option value='Male'>Male</option>
                         <option value='Female'>Female</option>
                     </select>
@@ -228,7 +228,7 @@ export default class CharInputs extends Component {
                     
                 </select>
 
-                <button >ROLL!</button>
+                <button className='roll-btn'>ROLL!</button>
             </form>
         )
     }
