@@ -94,10 +94,6 @@ export default class RollDisplay extends Component {
 
         let statsToMap = Object.keys(this.props.currentRoll.stats)
 
-        // statsToMap = statsToMap.map(stat => {
-        //     return stat.charAt(0).toUpperCase() + stat.slice(1);
-        // })
-        console.log('STM', statsToMap)
 
         return (
             <section className='roll-display hidden'>
@@ -115,7 +111,7 @@ export default class RollDisplay extends Component {
                         </tr>
 
                         {statsToMap.map(stat => <tr>
-                            <td>{stat}</td>
+                            <td>{stat.charAt(0).toUpperCase() + stat.slice(1)}</td>
                             <td>{this.props.currentRoll.originalRolls[stat]}</td>
                             <td>{this.calculateDifference(this.props.currentRoll.originalRolls[stat], this.props.currentRoll.stats[stat])}</td>
                             <td>{this.props.currentRoll.stats[stat]}</td>
