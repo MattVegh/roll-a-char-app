@@ -2,44 +2,44 @@ export default {
 
     'genders': ['Male', 'Female'],
 
-    'statNames': ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
+    'statNames': ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'],
 
     'classTypes': {
         'Barbarian': {
-            'TopStats': ['Strength']
+            'TopStats': ['strength']
         },
         'Bard': {
-            'TopStats': ['Charisma']
+            'TopStats': ['charisma']
         },
         'Cleric': {
-            'TopStats': ['Wisdom']
+            'TopStats': ['wisdom']
         },
         'Druid': {
-            'TopStats': ['Wisdom']
+            'TopStats': ['wisdom']
         },
         'Fighter': {
-            'TopStats': ['Strength', 'Dexterity']
+            'TopStats': ['strength', 'dexterity']
         },
         'Monk': {
-            'TopStats': ['Dexterity', 'Wisdom']
+            'TopStats': ['dexterity', 'wisdom']
         },
         'Paladin': {
-            'TopStats': ['Strength', 'Constitution']
+            'TopStats': ['strength', 'constitution']
         },
         'Ranger': {
-            'TopStats': ['Dexterity', 'Wisdom']
+            'TopStats': ['dexterity', 'wisdom']
         },
         'Rogue': {
-            'TopStats': ['Dexterity']
+            'TopStats': ['dexterity']
         },
         'Sorcerer': {
-            'TopStats': ['Charisma']
+            'TopStats': ['charisma']
         },
         'Warlock': {
-            'TopStats': ['Charisma']
+            'TopStats': ['charisma']
         },
         'Wizard': {
-            'TopStats': ['Intelligence']
+            'TopStats': ['intelligence']
         }
     },
 
@@ -47,8 +47,8 @@ export default {
     'races': {
         'Dragonborn': {
             'statBonus': {
-                'Strength': 2,
-                'Charisma': 1
+                'strength': 2,
+                'charisma': 1
             },
 
             'Gender': {
@@ -64,7 +64,7 @@ export default {
         },
         'Dwarf': {
             'statBonus': {
-                'Constitution': 2
+                'constitution': 2
             },
 
             'Gender': {
@@ -80,7 +80,7 @@ export default {
 
         'Elf': {
             'statBonus': {
-                'Dexterity': 2
+                'dexterity': 2
             },
 
             'Gender': {
@@ -96,7 +96,7 @@ export default {
 
         'Gnome': {
             'statBonus': {
-                'Intelligence': 2
+                'intelligence': 2
             },
 
             'Gender': {
@@ -112,7 +112,7 @@ export default {
 
         'Half-Elf': {
             'statBonus': {
-                'Charisma': 2
+                'charisma': 2
                 //+1 to two other random stats
             },
 
@@ -129,7 +129,7 @@ export default {
 
         'Halfling': {
             'statBonus': {
-                'Dexterity': 2
+                'dexterity': 2
             },
 
             'Gender': {
@@ -145,8 +145,8 @@ export default {
 
         'Half-Orc': {
             'statBonus': {
-                'Strength': 2,
-                'Constitution': 1
+                'strength': 2,
+                'constitution': 1
             },
 
             'Gender': {
@@ -162,12 +162,12 @@ export default {
 
         'Human': {
             'statBonus': {
-                'Strength': 1,
-                'Dexterity': 1,
-                'Constitution': 1,
-                'Intelligence': 1,
-                'Wisdom': 1,
-                'Charisma': 1
+                'strength': 1,
+                'dexterity': 1,
+                'constitution': 1,
+                'intelligence': 1,
+                'wisdom': 1,
+                'charisma': 1
             },
 
             'Gender': {
@@ -183,8 +183,8 @@ export default {
 
         'Tiefling': {
             'statBonus': {
-                'Charisma': 2,
-                'Intelligence': 1
+                'charisma': 2,
+                'intelligence': 1
             },
 
             'Gender': {
