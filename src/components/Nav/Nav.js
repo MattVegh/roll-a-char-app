@@ -6,13 +6,17 @@ export default function Nav() {
     return (
         <header className='titles'>
             <div className='header-container'>
-                <img className='dragon-header' src={require('../../images/dragon-left.png')}></img>
-                
+                <div className='image-container'>
+                    <img className='dragon-header' src={require('../../images/dragon-left.png')}></img>
+                </div>
+
                 <div className='title-container'>
                     <h1 className='app-title'>Roll-A-Char</h1>
                     <p className='app-subtitle'>Get a head start on character creation!</p>
                 </div>
-                <img className='dragon-header' src={require('../../images/dragon-right.png')}></img>
+                <div className='image-container'>
+                    <img className='dragon-header' src={require('../../images/dragon-right.png')}></img>
+                </div>
             </div>
             <nav>
                 <ul>
