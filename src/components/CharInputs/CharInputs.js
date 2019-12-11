@@ -202,32 +202,37 @@ export default class CharInputs extends Component {
         //console.log('races to map are', races)
         return (
             <form className='char-inputs' onSubmit={this.handleSubmit}>
-                <div className='name-gender-box'>
-                    <label htmlFor='name' >Name:</label>
-                    <input type='text' name='name' className='name-input'></input>
+                <div className='flex-container'>
+                    <div className='input-container'>
+                        <label htmlFor='name' >Name:</label>
+                        <input type='text' name='name' className='name-input'></input>
+                    </div>
+                    <div className='input-container'>
+                        <label htmlFor='gender'>Gender:</label>
+                        <select className='gender-input' name='gender'>
+                            <option value='' >--</option>
+                            <option value='Male'>Male</option>
+                            <option value='Female'>Female</option>
+                        </select>
+                    </div>
 
-                    <label htmlFor='gender'>Gender:</label>
-                    <select className='gender-input' name='gender'>
-                        <option value='' >--</option>
-                        <option value='Male'>Male</option>
-                        <option value='Female'>Female</option>
-                    </select>
+                    <div className='input-container'>
+                        <label htmlFor='race'>Race:</label>
+                        <select className='race-input' name='race'>
+                            <option value=''>--</option>
+
+                            {races.map(race => <option value={race}>{race}</option>)}
+                        </select>
+                    </div>
+                    <div className='input-container'>
+                        <label htmlFor='class-type'>Class:</label>
+                        <select className='class-input' name='classType'>
+                            <option value=''>--</option>
+                            {classToMap.map(classType => <option value={classType}>{classType}</option>)}
+
+                        </select>
+                    </div>
                 </div>
-
-                <label htmlFor='race'>Race:</label>
-                <select className='race-input' name='race'>
-                    <option value=''>--</option>
-                    
-                    {races.map(race => <option value={race}>{race}</option>)}
-                </select>
-
-                <label htmlFor='class-type'>Class:</label>
-                <select className='class-input' name='classType'>
-                    <option value=''>--</option>
-                    {classToMap.map(classType => <option value={classType}>{classType}</option>)}
-                    
-                </select>
-
                 <button className='roll-btn'>ROLL!</button>
             </form>
         )

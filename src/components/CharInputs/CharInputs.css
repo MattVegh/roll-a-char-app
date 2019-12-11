@@ -1,6 +1,34 @@
 .char-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: none;
+    
   }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  }
+
+.roll-btn {
+  width: 70px;
+}
+
+@media screen and (min-width: 1000px) {
+  .flex-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .input-container {
+    margin-right: 15px;
+  }
+}
