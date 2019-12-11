@@ -1,17 +1,19 @@
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
   }
 
 html { 
-  background: url('./images/vintagepaper.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url('./images/vintagepaper.jpg') no-repeat center center fixed;
+  background-size: cover; 
+  height: 100%;
+  overflow: hidden;
+  
 
   }
 
 body {
+  height: 100%;
+  overflow: auto;
   font-family: 'Gupter', serif;
   font-size: 20px;
   }
