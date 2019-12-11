@@ -24,10 +24,6 @@
   
 }
 
-/* .btn-container {
-  text-align: center;
-} */
-
 @media screen and (min-width: 1000px) {
   .flex-container {
     flex-direction: row;

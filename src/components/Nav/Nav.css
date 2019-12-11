@@ -50,3 +50,13 @@ li {
   padding: 10px;
   width: 110px;
 }
+
+.divider-container{
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+.divider {
+  width: 100%;
+}
