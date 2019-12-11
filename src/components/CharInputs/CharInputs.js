@@ -233,7 +233,9 @@ export default class CharInputs extends Component {
                         </select>
                     </div>
                 </div>
-                <button className='roll-btn'>ROLL!</button>
+                <div className='btn-container'>
+                    <button className='roll-btn'>ROLL!</button>
+                </div>
             </form>
         )
     }

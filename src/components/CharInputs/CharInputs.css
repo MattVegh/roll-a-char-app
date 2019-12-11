@@ -20,7 +20,12 @@
 
 .roll-btn {
   text-align: center;
-  width: 70px;
+  width: 120px;
+  
+}
+
+.btn-container {
+  text-align: center;
 }
 
 @media screen and (min-width: 1000px) {
