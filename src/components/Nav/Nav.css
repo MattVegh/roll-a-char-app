@@ -46,17 +46,32 @@ li {
   margin-right: 15px;
 }
 
+.image-container {
+  height: 125px;
+}
 .dragon-header {
   padding: 10px;
   width: 110px;
 }
 
+@media screen and (max-width: 390px) {
+  .image-container {
+    display: none;
+  }
+}
+
 .divider-container{
-  width: 25%;
+  width: 150px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
 }
 .divider {
   width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .divider-container {
+    width: 25%;
+  }
 }

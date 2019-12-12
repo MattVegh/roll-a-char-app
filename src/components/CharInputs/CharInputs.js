@@ -201,7 +201,13 @@ export default class CharInputs extends Component {
         //console.log('classes to map are', classToMap)
         //console.log('races to map are', races)
         return (
+
             <form className='char-inputs' onSubmit={this.handleSubmit}>
+                <div className='app-desc-container'>
+                <p className='app-desc'>This app will help you skip some of the beginning steps when making a character.
+                    Input as much or as little as you like and let the generator fill out the rest.
+                </p>
+                </div>
                 <div className='flex-container'>
                     <div className='input-container'>
                         <label htmlFor='name' >Name:</label>

@@ -16,7 +16,7 @@ export default function Nav() {
                     <div className='divider-container'>
                         <img className='divider' src={require('../../images/divider-one.png')}></img>
                     </div>
-                    <p className='app-descrition'>This app will help you skip some of the beginning steps when making a character. Input as much or as little as you like and let the generator fill out the rest.</p>
+                    
                 </div>
                 <div className='image-container'>
                     <img className='dragon-header' src={require('../../images/dragon-right.png')}></img>

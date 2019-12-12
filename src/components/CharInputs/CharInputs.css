@@ -4,24 +4,25 @@
   align-items: center;
 }
 
+.app-desc-container {
+  text-align: center;
+}
+
 .flex-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
   }
 
 .input-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   }
 
 .roll-btn {
   text-align: center;
   width: 90px;
-  
 }
 
 @media screen and (min-width: 1000px) {
