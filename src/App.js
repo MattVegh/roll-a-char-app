@@ -38,24 +38,7 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   fetch(`https://roll-a-char-api.herokuapp.com/characters`)
-  //     .then(response => response.json())
-  //     .then((responseJson) => {
-  //       this.setState({ characters: responseJson })
-  //     })
-  // }
-
-  // componentDidMount() {
-  //   fetch(`http://localhost:8000/characters`)
-  //     .then(response => response.json())
-  //     .then((responseJson) => {
-  //       this.setState({ characters: responseJson })
-  //     })
-  // }
-
   updateCurrentRoll = (charDetails) => {
-    console.log('from updateCurrentRoll in App before state update', this.state)
     this.setState({
       currentRoll: {
         name: charDetails.name,
@@ -83,21 +66,15 @@ class App extends Component {
       shouldDisplay: false,
 
     })
-    console.log('from updateCurrentRoll in App after state update', this.state)
   }
 
   updateCurrentRollBio = (bio) => {
-
     this.setState({
       currentRoll: { ...this.state.currentRoll, bio: bio }
     })
-    console.log('bio is', bio)
-
   }
 
   postCharacter = () => {
-    console.log('post')
-    console.log('state in postcharacter', this.state.currentRoll)
     fetch(`https://roll-a-char-api.herokuapp.com/characters`, {
       method: 'POST',
       headers: {
@@ -137,12 +114,10 @@ class App extends Component {
   }
 
   sendToCharactersPage() {
-
     this.setState({
       shouldDisplay: true
     })
     this.props.history.push('/characters')
-
   }
 
   handleUpdate = () => {
@@ -152,8 +127,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('currentRoll in App.js is', this.state.currentRoll)
-
     return (
       <div className='App'>
         <div className='app-container'>

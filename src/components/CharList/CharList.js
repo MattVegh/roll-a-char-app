@@ -13,15 +13,11 @@ export default class CharList extends Component {
     }
 
     componentDidUpdate() {
-
         if (this.props.shouldDisplay === true) {
             this.fetchCharacters()
             this.props.handleUpdate()
         }
     }
-
-
-    
 
     fetchCharacters() {
         fetch(`https://roll-a-char-api.herokuapp.com/characters`)
@@ -31,16 +27,8 @@ export default class CharList extends Component {
             })
     }
 
-    // fetchCharacters() {
-    //     fetch(`http://localhost:8000/characters`)
-    //         .then(response => response.json())
-    //         .then((responseJson) => {
-    //             this.setState({ characters: responseJson })
-    //         })
-    // }
-
     calculateDifference = (beforeBonus, afterBonus) => {
-        if (Math.abs(beforeBonus - afterBonus) == 0) {
+        if (Math.abs(beforeBonus - afterBonus) === 0) {
             return null
         } else {
             let difference = Math.abs(beforeBonus - afterBonus)
@@ -85,14 +73,12 @@ export default class CharList extends Component {
 
     render() {
         let characters = this.state.characters
-        console.log('current characters are', characters)
-        console.log('current roll props are', this.props.currentRoll)
-
+        
         return (
             <main role='main'>
 
                 {!characters ? <div></div> : characters.slice(0).reverse().map(detail =>
-                    <section className='char-display'>
+                    <section className='char-display' key={detail.id}>
                         <h3 className='char-title'>{detail.fullname} the {detail.gender} {detail.race} {detail.class_type}</h3>
                         <table>
                             <tbody>

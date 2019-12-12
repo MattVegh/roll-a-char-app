@@ -11,11 +11,11 @@ export default class CharInputs extends Component {
             const tagName = element.tagName
             if (tagName === 'INPUT' || tagName === 'SELECT') {
                 const inputName = element.getAttribute('name')
-
+                
                 charDetails[inputName] = element.value;
             }
         })
-        //console.log('from handleSubmit', charDetails)
+
         this.handleInputFill(charDetails)
 
     };
@@ -24,23 +24,19 @@ export default class CharInputs extends Component {
         let races = Object.keys(nameStore.races)
         let genders = nameStore.genders
         let classes = Object.keys(nameStore.classTypes)
-        //console.log('races are', races, 'genders are', genders, 'classes are', classes)
 
         if (!charDetails.gender) {
             let randomGender = genders[Math.floor(Math.random() * genders.length)]
-            //console.log('random gender is', randomGender)
             charDetails.gender = randomGender;
         }
 
         if (!charDetails.classType) {
             let randomClass = classes[Math.floor(Math.random() * classes.length)]
-            //console.log('random class is', randomClass)
             charDetails.classType = randomClass
         }
 
         if (!charDetails.race) {
             let randomRace = races[Math.floor(Math.random() * races.length)]
-            //console.log('random race is', randomRace)
             charDetails.race = randomRace
         }
 
@@ -53,17 +49,8 @@ export default class CharInputs extends Component {
             let randomLastName = lastNameArray ? lastNameArray[Math.floor(Math.random() * lastNameArray.length)] : ''
 
             charDetails.name = `${randomFirstName} ${randomLastName}`
-
-            // console.log('firstname array', firstNameArray)
-            // console.log('lastName array', lastNameArray)
-            // console.log('first name is', randomFirstName)
-            // console.log('last name', randomLastName)
-
-
-
         }
 
-        //console.log('from handleInputFill', charDetails)
         this.generateStats(charDetails)
         document.querySelector('.roll-display').classList.remove('hidden')
     }
@@ -79,112 +66,73 @@ export default class CharInputs extends Component {
             for (let j = 0; j < 4; j++) {
                 let roll = Math.floor(Math.random() * 6) + 1;
                 dieArray.push(roll)
-                //console.log('rolls are', dieArray)
             }
-            dieArray.sort().shift()
 
-            //console.log('diearray', dieArray)
+            dieArray.sort().shift()
             let stat = dieArray[0] + dieArray[1] + dieArray[2]
             statArray.push(stat)
             originalRollsArray.push(stat)
-            //console.log('stat is', stat)
         }
 
-        //console.log('stats array', statArray)
         charDetails.stats = statArray
         charDetails.originalRolls = originalRollsArray
-        //console.log('originalRolls array is', charDetails.originalRolls)
 
         this.assignStats(charDetails)
 
     }
 
     assignStats = (charDetails) => {
-        //console.log('from assignStats', charDetails)
-        //console.log('stats', charDetails.stats)
-
         let statNames = nameStore.statNames
-        // console.log('stat names are', statNames)
-
         let topStats = nameStore.classTypes[charDetails.classType].TopStats
 
         //randomize the top stats for classes that have 2 priorities
-        if (Math.floor(Math.random() * 1) == 0) {
+        if (Math.floor(Math.random() * 1) === 0) {
             topStats.sort((a, b) => a - b)
         } else {
             topStats.sort((a, b) => b - a)
         }
 
-        //console.log('top stat for', charDetails.classType, 'is', topStats)
-
         //assign value to the prioritized stat(s)
         topStats.forEach(stat => {
-            //console.log('stat is', stat)
-
             let topRoll = Math.max(...charDetails.stats)
             charDetails.stats.splice(charDetails.stats.indexOf(topRoll), 1)
             charDetails.stats[stat] = topRoll
             charDetails.originalRolls[stat] = topRoll
-
-            // console.log('top roll is', topRoll)
-            // console.log('char details', charDetails.stats)
         });
-
-        //console.log('remaning stats', charDetails.stats)
 
         //assign values to the remaining stats
         statNames.forEach(stat => {
             if (!charDetails.stats[stat]) {
-                //console.log('statNames stat is', stat)
-
                 let roll = charDetails.stats[Math.floor(Math.random() * charDetails.stats.length)]
                 charDetails.stats.splice(charDetails.stats.indexOf(roll), 1)
                 charDetails.stats[stat] = roll
                 charDetails.originalRolls[stat] = roll
-
-                //console.log('rollll', roll)
-                //console.log('remaning stats', charDetails.stats)
             }
         })
         this.addRaceBonus(charDetails)
     }
 
     addRaceBonus = (charDetails) => {
-        //console.log('from addRaceBonus', charDetails)
-
-        //let statBonuses = nameStore.races[charDetails.race].statBonus
-        //console.log('stat bonuses are', statBonuses)
 
         let statBonusName = Object.keys(nameStore.races[charDetails.race].statBonus)
         let statBonusValue = Object.values(nameStore.races[charDetails.race].statBonus)
-        //console.log('stat bonuses for', charDetails.race, 'are', statBonusName, 'with a value of', statBonusValue)
-        //console.log('stats for current character are', charDetails.stats)
 
         statBonusName.forEach(stat => {
-            //console.log('stat to modify is', stat)
-            //console.log('statbonusvalue', statBonusValue[0])
-
             let modifiedStat = charDetails.stats[stat] + statBonusValue.shift()
             charDetails.stats[stat] = modifiedStat
-            //console.log(stat, 'after modifying is', modifiedStat)
         });
 
-        if (charDetails.race == 'Half-Elf') {
+        if (charDetails.race === 'Half-Elf') {
 
             let i = 0;
             let previousStat;
             while (i < 2) {
                 let extraStat = nameStore.statNames[Math.floor(Math.random() * nameStore.statNames.length)]
-                //console.log('extra stat is', extraStat)
-                //console.log('extra stats value is', charDetails.stats[extraStat])
-
 
                 if (extraStat !== 'charisma' || previousStat) {
                     charDetails.stats[extraStat] += 1
-                    //console.log('extra stats value after bonus is', charDetails.stats[extraStat])
                     i++
                     previousStat = extraStat
-                    //console.log('prev stat is', previousStat)
                 }
 
             }
@@ -198,8 +146,7 @@ export default class CharInputs extends Component {
     render() {
         let classToMap = Object.keys(nameStore.classTypes)
         let races = Object.keys(nameStore.races)
-        //console.log('classes to map are', classToMap)
-        //console.log('races to map are', races)
+
         return (
 
             <form className='char-inputs' onSubmit={this.handleSubmit}>
@@ -227,14 +174,14 @@ export default class CharInputs extends Component {
                         <select className='race-input' name='race'>
                             <option value=''>--</option>
 
-                            {races.map(race => <option value={race}>{race}</option>)}
+                            {races.map(race => <option key={race} value={race}>{race}</option>)}
                         </select>
                     </div>
                     <div className='input-container'>
                         <label htmlFor='class-type'>Class:</label>
                         <select className='class-input' name='classType'>
                             <option value=''>--</option>
-                            {classToMap.map(classType => <option value={classType}>{classType}</option>)}
+                            {classToMap.map(classType => <option key={classType} value={classType}>{classType}</option>)}
 
                         </select>
                     </div>
