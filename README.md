@@ -27,7 +27,6 @@ On the characters page you can see the characters that other users created and s
 * [Zeit](https://zeit.co) - Holds the live version
 * [Heroku](https://www.heroku.com) - Holds the database server
 
-
 ## Author
 
 * **Matthew Vegh** 
