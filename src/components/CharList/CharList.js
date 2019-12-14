@@ -90,46 +90,46 @@ export default class CharList extends Component {
                                     <th>Mod</th>
                                 </tr>
                                 <tr>
-                                    <td>Strength</td>
-                                    <td>{detail.strength_original}</td>
-                                    <td>{this.calculateDifference(detail.strength_original, detail.strength_total)}</td>
-                                    <td>{detail.strength_total}</td>
-                                    <td>{this.calculateModifier(detail.strength_total)}</td>
+                                    <td className='stat' >Strength</td>
+                                    <td className='value' >{detail.strength_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.strength_original, detail.strength_total)}</td>
+                                    <td className='total' >{detail.strength_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.strength_total)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Dexterity</td>
-                                    <td>{detail.dexterity_original}</td>
-                                    <td>{this.calculateDifference(detail.dexterity_original, detail.dexterity_total)}</td>
-                                    <td>{detail.dexterity_total}</td>
-                                    <td>{this.calculateModifier(detail.dexterity_total)}</td>
+                                    <td className='stat' >Dexterity</td>
+                                    <td className='value' >{detail.dexterity_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.dexterity_original, detail.dexterity_total)}</td>
+                                    <td className='total' >{detail.dexterity_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.dexterity_total)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Constitution</td>
-                                    <td>{detail.constitution_original}</td>
-                                    <td>{this.calculateDifference(detail.constitution_original, detail.constitution_total)}</td>
-                                    <td>{detail.constitution_total}</td>
-                                    <td>{this.calculateModifier(detail.constitution_total)}</td>
+                                    <td className='stat' >Constitution</td>
+                                    <td className='value' >{detail.constitution_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.constitution_original, detail.constitution_total)}</td>
+                                    <td className='total' >{detail.constitution_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.constitution_total)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Intelligence</td>
-                                    <td>{detail.intelligence_original}</td>
-                                    <td>{this.calculateDifference(detail.intelligence_original, detail.intelligence_total)}</td>
-                                    <td>{detail.intelligence_total}</td>
-                                    <td>{this.calculateModifier(detail.intelligence_total)}</td>
+                                    <td className='stat' >Intelligence</td>
+                                    <td className='value' >{detail.intelligence_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.intelligence_original, detail.intelligence_total)}</td>
+                                    <td className='total' >{detail.intelligence_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.intelligence_total)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Wisdom</td>
-                                    <td>{detail.wisdom_original}</td>
-                                    <td>{this.calculateDifference(detail.wisdom_original, detail.wisdom_total)}</td>
-                                    <td>{detail.wisdom_total}</td>
-                                    <td>{this.calculateModifier(detail.wisdom_total)}</td>
+                                    <td className='stat' >Wisdom</td>
+                                    <td className='value' >{detail.wisdom_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.wisdom_original, detail.wisdom_total)}</td>
+                                    <td className='total' >{detail.wisdom_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.wisdom_total)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Charisma</td>
-                                    <td>{detail.charisma_original}</td>
-                                    <td>{this.calculateDifference(detail.charisma_original, detail.charisma_total)}</td>
-                                    <td>{detail.charisma_total}</td>
-                                    <td>{this.calculateModifier(detail.charisma_total)}</td>
+                                    <td className='stat' >Charisma</td>
+                                    <td className='value' >{detail.charisma_original}</td>
+                                    <td className='bonus' >{this.calculateDifference(detail.charisma_original, detail.charisma_total)}</td>
+                                    <td className='total' >{detail.charisma_total}</td>
+                                    <td className='mod' >{this.calculateModifier(detail.charisma_total)}</td>
                                 </tr>
                             </tbody>
                         </table>
